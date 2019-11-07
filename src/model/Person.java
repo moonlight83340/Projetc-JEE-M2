@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class Person implements Serializable {
     private String website;
     
     @Column(name = "birthDate")
-    private String birthDate;
+    private Date birthDate;
     
     @Column(name = "password")
     private String password;
@@ -41,6 +42,23 @@ public class Person implements Serializable {
 	public Person() {
         super();
     }
+	
+	public Person(String lastname, String firstname, String email, String website, Date birthDate, String password) {
+        super();
+        
+        this.lastname = lastname;
+        
+        this.firstname = firstname;
+        
+        this.email = email;
+        
+        this.website = website;
+        
+        this.birthDate = birthDate;
+        
+        this.password = password;
+    }
+
 
     public Integer getId() {
         return id;
@@ -82,11 +100,11 @@ public class Person implements Serializable {
 		this.website = website;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
