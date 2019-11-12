@@ -23,12 +23,30 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
-	<dependency>
+    <dependencies>
+  <dependency>
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-entitymanager</artifactId>
-	    <version>5.4.8.Final</version>
+	    <version>4.3.11.Final</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>1.19</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-json -->
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-json</artifactId>
+	    <version>1.19</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>bootstrap</artifactId>
+	    <version>3.3.7</version>
 	</dependency>
 
   </dependencies>

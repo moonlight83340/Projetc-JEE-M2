@@ -4,9 +4,9 @@
           http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
     version="2.0">
 
-    <persistence-unit name="myBase" transaction-type="JTA">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <non-jta-data-source>MyDataSource</non-jta-data-source>
+    <persistence-unit name="myData" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>myTestDataSource</jta-data-source>
         <properties>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
@@ -15,5 +15,4 @@
             <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
     </persistence-unit>
-
 </persistence>

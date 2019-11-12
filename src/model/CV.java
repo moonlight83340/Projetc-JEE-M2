@@ -1,9 +1,11 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,10 +17,11 @@ public class CV implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id()
+    @GeneratedValue
     private Integer id;
     
     @OneToMany
-    ArrayList<Activity> activities = new ArrayList<Activity>();
+    List<Activity> activities = new ArrayList<Activity>();
 
     public Integer getId() {
         return id;
@@ -28,7 +31,7 @@ public class CV implements Serializable {
         this.id = id;
     }
     
-    public ArrayList<Activity> getActivities() {
+    public List<Activity> getActivities() {
     	return activities;
     }
     
