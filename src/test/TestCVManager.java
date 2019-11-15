@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import model.Person;
-import services.PersonManager;
+import model.CV;
+import services.CVManager;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -15,9 +15,9 @@ import javax.ejb.embeddable.EJBContainer;
 import org.junit.After;
 import org.junit.Before;
 
-class TestPersonManager {
+class TestCVManager {
 	    @EJB
-	    PersonManager pm;
+	    CVManager pm;
 
 	    @Before
 	    public void setUp() throws Exception {
@@ -29,40 +29,41 @@ class TestPersonManager {
 	        EJBContainer.createEJBContainer().close();
 	    }
 	    
-	    public Person createNewPerson() {
-	    	Person p = new Person();   	
-	    	return p;
+	    public CV createNewCV() {
+	    	CV c = new CV();
+	    	
+	    	return c;
 	    }
 
 	    @Test
-	    public void testFindPersons() {
+	    public void testFindCourses() {
 	    	assert(!pm.findAll().isEmpty());
 	    }
 
 	    @Test
-	    public void testAddPerson() {
-	    	Person p = createNewPerson();
-	    	assertNotNull(p);
+	    public void testAddCV() {
+	    	CV c = createNewCV();
+	    	assertNotNull(c);
 	    }
 	    
 	    @Test
-	    public void testBadAddPerson() {
-	    	//Person p = createNewPerson();
+	    public void testBadAddCV() {
+	    	//CV c = createNewCV();
 	    }
 	    
 	    @Test
-	    public void testUpdatePerson() {
-	    	//Person p = createNewPerson();
+	    public void testUpdateCV() {
+	    	//CV c = createNewCV();
 	    }
 	    
 	    @Test
-	    public void testRemovePerson() {
-	    	//Person p = createNewPerson();
+	    public void testRemoveCV() {
+	    	//CV c = createNewCV();
 	    }
 	
 	    @Test
-	    public void testBadRemovePerson() {
-	    	//Person p = createNewPerson();
+	    public void testBadRemoveCV() {
+	    	//CV c = createNewCV();
 	    }
 	
 

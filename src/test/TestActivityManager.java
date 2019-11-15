@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import model.Person;
-import services.PersonManager;
+import model.Activity;
+import services.ActivityManager;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -15,9 +15,9 @@ import javax.ejb.embeddable.EJBContainer;
 import org.junit.After;
 import org.junit.Before;
 
-class TestPersonManager {
+class TestActivityManager {
 	    @EJB
-	    PersonManager pm;
+	    ActivityManager pm;
 
 	    @Before
 	    public void setUp() throws Exception {
@@ -29,40 +29,41 @@ class TestPersonManager {
 	        EJBContainer.createEJBContainer().close();
 	    }
 	    
-	    public Person createNewPerson() {
-	    	Person p = new Person();   	
-	    	return p;
+	    public Activity createNewActivity() {
+	    	Activity a = new Activity();
+	    	
+	    	return a;
 	    }
 
 	    @Test
-	    public void testFindPersons() {
+	    public void testFindActivities() {
 	    	assert(!pm.findAll().isEmpty());
 	    }
 
 	    @Test
-	    public void testAddPerson() {
-	    	Person p = createNewPerson();
-	    	assertNotNull(p);
+	    public void testAddActivity() {
+	    	Activity a = createNewActivity();
+	    	assertNotNull(a);
 	    }
 	    
 	    @Test
-	    public void testBadAddPerson() {
-	    	//Person p = createNewPerson();
+	    public void testBadAddActivity() {
+	    	//Activity a = createNewActivity();
 	    }
 	    
 	    @Test
 	    public void testUpdatePerson() {
-	    	//Person p = createNewPerson();
+	    	//Person a = createNewActivity();
 	    }
 	    
 	    @Test
 	    public void testRemovePerson() {
-	    	//Person p = createNewPerson();
+	    	//Activity a = createNewActivity();
 	    }
 	
 	    @Test
 	    public void testBadRemovePerson() {
-	    	//Person p = createNewPerson();
+	    	//Activity a = createNewActivity();
 	    }
 	
 
