@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 import model.Person;
@@ -42,7 +44,7 @@ class TestPersonManager {
 	    @Test
 	    public void testAddPerson() {
 	    	Person p = createNewPerson();
-	    	assertNotNull(p);
+	    	assertNotNull(pm.save(p));
 	    }
 	    
 	    @Test
