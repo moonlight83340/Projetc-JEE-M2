@@ -9,37 +9,42 @@ import model.Person;
 import java.util.List;
 
 @Stateless
-public class PersonManager {
+public class PersonManager implements IManager<Person>, IFindLikeManager<Person> {
 
     @PersistenceContext(unitName = "myData")
     EntityManager em;
 
-    public List<Person> findPersons() {
+	@Override
+	public List<Person> findAll() {
         return em.createQuery("Select p From Person p", Person.class)
                 .getResultList();
-    }
-    
-    public List<Person> findPersonsLike(String patern) {
+	}
+
+	@Override
+	public List<Person> findLike(String patern) {
         return em.createQuery("Select p From Person p where p.lastname = " + patern + " or p.firstname = " + patern, Person.class)
                 .getResultList();
-    }
+	}
 
-    public Person findPerson(Long id) {
-        return em.find(Person.class, id);
-    }
+	@Override
+	public Person find(Long id) {
+		return em.find(Person.class, id);
+	}
 
-    public Person savePerson(Person p) {
-        if (p.getId() == null) {
-            em.persist(p);
+	@Override
+	public Person save(Person t) {
+        if (t.getId() == null) {
+            em.persist(t);
         } else {
-            p = em.merge(p);
+            t = em.merge(t);
         }
-        return p;
-    }
+        return t;
+	}
 
-    public void deletePerson(Person p) {
-        p = em.merge(p);
-        em.remove(p);
-    }
+	@Override
+	public void delete(Person t) {
+        t = em.merge(t);
+        em.remove(t);	
+	}
 
 }

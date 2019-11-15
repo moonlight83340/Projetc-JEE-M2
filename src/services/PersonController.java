@@ -24,7 +24,7 @@ public class PersonController {
 	@PostConstruct
 	public void init() {
 		System.out.println("Create " + this);
-		if (pm.findPersons().size() == 0) {
+		if (pm.findAll().size() == 0) {
 			Person p1 = new Person();
 			
 			p1.setLastname("lastname");
@@ -33,12 +33,12 @@ public class PersonController {
 			p1.setBirthDate(new Date());
 			p1.setPassword("password");
 			
-			pm.savePerson(p1);
+			pm.save(p1);
 		}
 	}
 
 	public List<Person> getPersons() {
-		return pm.findPersons();
+		return pm.findAll();
 	}
 
 	public Person getThePerson() {
@@ -46,12 +46,12 @@ public class PersonController {
 	}
 
 	public String show(Long n) {
-		thePerson = pm.findPerson(n);
+		thePerson = pm.find(n);
 		return "showPerson";
 	}
 
 	public String save() {
-		pm.savePerson(thePerson);
+		pm.save(thePerson);
 		return "showPerson";
 	}
 
