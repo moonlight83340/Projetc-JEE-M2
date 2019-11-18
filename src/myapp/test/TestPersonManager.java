@@ -2,6 +2,7 @@ package myapp.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -16,15 +17,13 @@ import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 
 import org.junit.After;
-import org.junit.Before;
 
 class TestPersonManager {
 
 	@EJB
 	PersonManager pm;
 
-	@Before
-	public void setUp() throws Exception {
+	public TestPersonManager() throws Exception {
 		EJBContainer.createEJBContainer().getContext().bind("inject", this);
 		assertNotNull(pm);
 	}
@@ -89,6 +88,20 @@ class TestPersonManager {
 		
 		Person same = pm.find(person.getId());
 		assertNull(same);
+	}
+	
+	@Test
+	public void testPersonLike() {
+		Person person = createNewPersonInit();
+		person.setFirstname("Eucbert");
+		person = pm.save(person);
+		
+		Person person2 = createNewPersonInit();
+		person2.setLastname("Bertran");
+		person2 = pm.save(person);
+		
+		List<Person> same = pm.findLike("bert");
+		assertTrue(same.size() >= 2);
 	}
 
 	@Test

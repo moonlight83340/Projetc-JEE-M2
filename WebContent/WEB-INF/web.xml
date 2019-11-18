@@ -36,6 +36,6 @@
     </context-param>
     <context-param>
         <param-name>org.apache.myfaces.annotation.SCAN_PACKAGES</param-name>
-        <param-value>myapprest</param-value>
+        <param-value>Projet-JEE-M2</param-value>
     </context-param>
 </web-app>

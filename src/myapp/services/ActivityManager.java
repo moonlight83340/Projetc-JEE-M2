@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import myapp.model.Activity;
 
 @Stateless
-public class ActivityManager implements IManager<Activity>, IFindLikeManager<Activity> {
+public class ActivityManager implements IManager<Activity>{
 
     @PersistenceContext(unitName = "myData")
     EntityManager em;

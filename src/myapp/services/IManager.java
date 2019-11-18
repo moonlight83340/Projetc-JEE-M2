@@ -3,12 +3,13 @@ package myapp.services;
 import java.util.List;
 
 public interface IManager<T> {
-    public abstract List<T> findAll();
+	
+    public T find(Integer id);
+    public List<T> findAll();
+    public List<T> findLike(String patern);
 
-    public abstract T find(Integer id);
+    public T save(T t);
 
-    public abstract T save(T t);
-
-    public abstract void delete(T t);
+    public void delete(T t);
     
 }

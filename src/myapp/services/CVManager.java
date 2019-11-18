@@ -40,4 +40,9 @@ public class CVManager implements IManager<CV>{
         t = em.merge(t);
         em.remove(t);	
 	}
+
+	@Override
+	public List<CV> findLike(String patern) {
+		return null;
+	}
 }
