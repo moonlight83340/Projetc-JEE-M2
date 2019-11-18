@@ -22,7 +22,7 @@ public class PersonManager implements IManager<Person>{
 
 	@Override
 	public List<Person> findLike(String patern) {
-        return em.createQuery("Select p From Person p where p.lastname = " + patern + " or p.firstname = " + patern, Person.class)
+        return em.createQuery("Select p From Person p where p.lastname like '%" + patern + "%' or p.firstname like '%" + patern + "%'", Person.class)
                 .getResultList();
 	}
 
@@ -45,6 +45,11 @@ public class PersonManager implements IManager<Person>{
 	public void delete(Person t) {
         t = em.merge(t);
         em.remove(t);	
+	}
+
+	@Override
+	public Person create() {
+		return new Person();
 	}
 
 }

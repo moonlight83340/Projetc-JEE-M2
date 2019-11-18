@@ -46,4 +46,9 @@ public class ActivityManager implements IManager<Activity>{
         t = em.merge(t);
         em.remove(t);	
 	}
+
+	@Override
+	public Activity create() {
+		return new Activity();
+	}
 }
