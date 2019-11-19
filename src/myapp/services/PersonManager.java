@@ -30,6 +30,11 @@ public class PersonManager implements IManager<Person>{
 	public Person find(Integer id) {
 		return em.find(Person.class, id);
 	}
+	
+	public Person findByEmail(String email) {
+		return em.createQuery("Select p From Person p where p.email = " + email, Person.class)
+                .getSingleResult();
+	}
 
 	@Override
 	public Person save(Person t) {

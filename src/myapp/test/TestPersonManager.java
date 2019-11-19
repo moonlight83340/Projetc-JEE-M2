@@ -105,6 +105,17 @@ class TestPersonManager {
 	}
 
 	@Test
+	public void testPersonByEmail() {
+		Person person = createNewPersonInit();
+		person.setEmail("bertrand.blanc@gmail.com");
+		person = pm.save(person);
+		
+		Person same = pm.findByEmail("bertrand.blanc@gmail.com");
+		
+		assertTrue(same.equals(person));
+	}
+	
+	@Test
 	public void testAddCV() {
 		Person person = createNewPersonInit();
 		
