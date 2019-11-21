@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import myapp.model.Activity;
+import myapp.model.Person;
 
 @Stateless
-public class ActivityManager implements IManager<Activity>{
+public class ActivityManager implements IManager<Activity>, IFindLikeManager<Activity>{
 
     @PersistenceContext(unitName = "myData")
     EntityManager em;

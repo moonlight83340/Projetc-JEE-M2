@@ -9,7 +9,7 @@ import myapp.model.Person;
 import java.util.List;
 
 @Stateless
-public class PersonManager implements IManager<Person>{
+public class PersonManager implements IManager<Person>, IFindLikeManager<Person>{
 
     @PersistenceContext(unitName="myData")
     EntityManager em;
