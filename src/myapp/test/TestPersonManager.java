@@ -17,17 +17,19 @@ import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 
 import org.junit.After;
+import org.junit.Before;
 
 class TestPersonManager {
 
 	@EJB
 	PersonManager pm;
 
-	public TestPersonManager() throws Exception {
-		EJBContainer.createEJBContainer().getContext().bind("inject", this);
-		assertNotNull(pm);
-	}
-
+    @Before
+    public void setUp() throws Exception {
+        EJBContainer.createEJBContainer().getContext().bind("inject", this);
+        assertNotNull(pm);
+    }
+    
 	@After
 	public void tearDown() throws Exception {
 		EJBContainer.createEJBContainer().close();
@@ -41,11 +43,6 @@ class TestPersonManager {
 	public Person createNewPersonInit() {
 		Person p = new Person("a", "a", "a@a.a", "a.com", new Date(), "a");
 		return p;
-	}
-
-	@Test
-	public void testCorrect() {
-		assertNotNull(pm);
 	}
 
 	@Test
