@@ -24,8 +24,9 @@ class TestPersonManager {
 	@EJB
 	PersonManager pm;
 
-    @Before
-    public void setUp() throws Exception {
+    public TestPersonManager() throws Exception {
+        // Nous injectons le test dans le container pour que 
+        // l'annotation @EJB soit traitée
         EJBContainer.createEJBContainer().getContext().bind("inject", this);
         assertNotNull(pm);
     }
