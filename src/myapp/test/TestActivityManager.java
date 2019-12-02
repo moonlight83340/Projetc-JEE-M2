@@ -19,6 +19,11 @@ class TestActivityManager {
 	    @EJB
 	    ActivityManager pm;
 
+		public TestActivityManager() throws Exception {
+			EJBContainer.createEJBContainer().getContext().bind("inject", this);
+			assertNotNull(pm);
+		}
+	    
 	    @Before
 	    public void setUp() throws Exception {
 	        EJBContainer.createEJBContainer().getContext().bind("inject", this);
@@ -31,19 +36,18 @@ class TestActivityManager {
 	    
 	    public Activity createNewActivity() {
 	    	Activity a = new Activity();
-	    	
 	    	return a;
-	    }
-
-	    @Test
-	    public void testFindActivities() {
-	    	assert(!pm.findAll().isEmpty());
 	    }
 
 	    @Test
 	    public void testAddActivity() {
 	    	Activity a = createNewActivity();
 	    	assertNotNull(a);
+	    }
+	    
+	    @Test
+	    public void testFindActivities() {
+	    	assert(!pm.findAll().isEmpty());
 	    }
 	    
 	    @Test

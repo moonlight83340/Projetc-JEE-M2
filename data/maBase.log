@@ -1,0 +1,3 @@
+/*C2*/SET SCHEMA PUBLIC
+\u000a    alter table T_CV_T_Activity \u000a        drop constraint UK_o9fr5vdgxex4citf71txa3wb7
+\u000a    alter table T_CV_T_Activity \u000a        add constraint UK_o9fr5vdgxex4citf71txa3wb7 unique (activities_id)

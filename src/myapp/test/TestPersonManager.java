@@ -24,8 +24,8 @@ class TestPersonManager {
 	PersonManager pm;
 
 	public TestPersonManager() throws Exception {
-//		EJBContainer.createEJBContainer().getContext().bind("inject", this);
-//		assertNotNull(pm);
+		EJBContainer.createEJBContainer().getContext().bind("inject", this);
+		assertNotNull(pm);
 	}
 
 	@After

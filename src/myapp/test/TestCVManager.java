@@ -18,7 +18,12 @@ import org.junit.Before;
 class TestCVManager {
 	    @EJB
 	    CVManager pm;
-
+	    
+		public TestCVManager() throws Exception {
+			EJBContainer.createEJBContainer().getContext().bind("inject", this);
+			assertNotNull(pm);
+		}
+		
 	    @Before
 	    public void setUp() throws Exception {
 	        EJBContainer.createEJBContainer().getContext().bind("inject", this);
@@ -31,7 +36,6 @@ class TestCVManager {
 	    
 	    public CV createNewCV() {
 	    	CV c = new CV();
-	    	
 	    	return c;
 	    }
 

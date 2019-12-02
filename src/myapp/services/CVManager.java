@@ -3,12 +3,15 @@ package myapp.services;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import myapp.model.CV;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class CVManager implements IManager<CV>{
 
     @PersistenceContext(unitName = "myData")
