@@ -1,0 +1,9 @@
+<openejb>
+    <Resource id="MyDataSource" type="DataSource">
+        JdbcDriver org.hsqldb.jdbcDriver
+        JdbcUrl jdbc:hsqldb:file:data/maBase;shutdown=true;hsqldb.write_delay=false
+        UserName sa
+        Password
+        JtaManaged false
+    </Resource>
+</openejb>

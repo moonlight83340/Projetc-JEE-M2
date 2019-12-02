@@ -2,14 +2,15 @@ package myapp.services;
 
 import java.util.List;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import myapp.model.Activity;
-import myapp.model.Person;
 
 @Stateless
+@Local(IFindLikeManager.class)
 public class ActivityManager implements IManager<Activity>, IFindLikeManager<Activity>{
 
     @PersistenceContext(unitName = "myData")

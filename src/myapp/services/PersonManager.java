@@ -1,5 +1,6 @@
 package myapp.services;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import myapp.model.Person;
 import java.util.List;
 
 @Stateless
+@Local(IFindLikeManager.class)
 public class PersonManager implements IManager<Person>, IFindLikeManager<Person>{
 
     @PersistenceContext(unitName="myData")
