@@ -1,5 +1,6 @@
 package myapp.services;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -10,8 +11,9 @@ import myapp.model.Person;
 
 import java.util.List;
 
-@Stateless
+@Stateless(name="personManager")
 @TransactionManagement(TransactionManagementType.CONTAINER)
+@LocalBean
 public class PersonManager implements IFindLikeManager<Person>{
     @PersistenceContext(unitName="myData")
     EntityManager em;
@@ -34,7 +36,7 @@ public class PersonManager implements IFindLikeManager<Person>{
 	}
 	
 	public Person findByEmail(String email) {
-		return em.createQuery("Select p From Person p where p.email = " + email, Person.class)
+		return em.createQuery("Select p From Person p where p.email = '" + email + "'", Person.class)
                 .getSingleResult();
 	}
 

@@ -42,6 +42,7 @@ class TestPersonManager {
     @BeforeEach
     public void before() throws Exception {
         container.getContext().bind("inject", this);
+        
     }
 
 	public Person createNewPerson() {
