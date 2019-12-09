@@ -2,6 +2,9 @@ package myapp.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import myapp.model.CV;
@@ -19,15 +22,21 @@ class TestCVManager {
 	    @EJB
 	    CVManager pm;
 	    
-	    @Before
-	    public void setUp() throws Exception {
-	        EJBContainer.createEJBContainer().getContext().bind("inject", this);
-	        assertNotNull(pm);
+		static EJBContainer container;
+		
+	    @BeforeAll
+	    static  public void beforeAll() throws Exception {
+	        container = EJBContainer.createEJBContainer();
+	    }
+	    
+	    @AfterAll
+	    static  public void afterAll() throws Exception {
+	        container.close();
 	    }
 
-	    @After
-	    public void tearDown() throws Exception {
-	        EJBContainer.createEJBContainer().close();
+	    @BeforeEach
+	    public void before() throws Exception {
+	        container.getContext().bind("inject", this);
 	    }
 	    
 	    public CV createNewCV() {

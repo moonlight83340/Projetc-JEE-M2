@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.Date;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import myapp.model.CV;
@@ -24,17 +27,22 @@ class TestPersonManager {
 	@EJB
 	PersonManager pm;
 
-    public TestPersonManager() throws Exception {
-        // Nous injectons le test dans le container pour que 
-        // l'annotation @EJB soit traitée
-        EJBContainer.createEJBContainer().getContext().bind("inject", this);
-        assertNotNull(pm);
+	static EJBContainer container;
+	
+    @BeforeAll
+    static  public void beforeAll() throws Exception {
+        container = EJBContainer.createEJBContainer();
     }
     
-	@After
-	public void tearDown() throws Exception {
-		EJBContainer.createEJBContainer().close();
-	}
+    @AfterAll
+    static  public void afterAll() throws Exception {
+        container.close();
+    }
+
+    @BeforeEach
+    public void before() throws Exception {
+        container.getContext().bind("inject", this);
+    }
 
 	public Person createNewPerson() {
 		Person p = new Person();
@@ -48,6 +56,7 @@ class TestPersonManager {
 
 	@Test
 	public void testFindPersons() {
+        assertNotNull(pm);
 		Person person = createNewPersonInit();
 		person = pm.save(person);
 
