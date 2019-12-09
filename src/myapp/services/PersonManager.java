@@ -1,6 +1,5 @@
 package myapp.services;
 
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -12,9 +11,8 @@ import myapp.model.Person;
 import java.util.List;
 
 @Stateless
-@Local(IFindLikeManager.class)
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class PersonManager implements IManager<Person>, IFindLikeManager<Person>{
+public class PersonManager implements IFindLikeManager<Person>{
     @PersistenceContext(unitName="myData")
     EntityManager em;
 

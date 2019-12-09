@@ -2,6 +2,9 @@ package myapp.services;
 
 import java.util.List;
 
-public interface IFindLikeManager<T> {
+import javax.ejb.Local;
+
+@Local
+public interface IFindLikeManager<T> extends IManager<T>{
 	public List<T> findLike(String patern);
 }

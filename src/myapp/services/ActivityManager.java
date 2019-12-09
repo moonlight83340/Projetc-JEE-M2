@@ -1,8 +1,6 @@
 package myapp.services;
 
 import java.util.List;
-
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -12,9 +10,8 @@ import javax.persistence.PersistenceContext;
 import myapp.model.Activity;
 
 @Stateless
-@Local(IFindLikeManager.class)
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class ActivityManager implements IManager<Activity>, IFindLikeManager<Activity>{
+public class ActivityManager implements IFindLikeManager<Activity> {
 
     @PersistenceContext(unitName = "myData")
     EntityManager em;
