@@ -106,9 +106,9 @@ class TestPersonManager {
 		
 		Person person2 = createNewPersonInit();
 		person2.setLastname("Bertran");
-		person2 = pm.save(person);
+		person2 = pm.save(person2);
 		
-		List<Person> same = pm.findLike("bert");
+		List<Person> same = pm.findLike("ert");
 		assertTrue(same.size() >= 2);
 	}
 

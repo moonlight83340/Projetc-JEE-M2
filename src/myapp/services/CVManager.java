@@ -2,6 +2,7 @@ package myapp.services;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -10,8 +11,9 @@ import javax.persistence.PersistenceContext;
 
 import myapp.model.CV;
 
-@Stateless
+@Stateless(name="cvManager")
 @TransactionManagement(TransactionManagementType.CONTAINER)
+@LocalBean
 public class CVManager implements IManager<CV>{
 
     @PersistenceContext(unitName = "myData")

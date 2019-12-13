@@ -15,6 +15,7 @@ import java.util.List;
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @LocalBean
 public class PersonManager implements IFindLikeManager<Person>{
+	
     @PersistenceContext(unitName="myData")
     EntityManager em;
 

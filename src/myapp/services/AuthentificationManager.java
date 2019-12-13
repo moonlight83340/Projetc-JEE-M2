@@ -22,7 +22,7 @@ public class AuthentificationManager{
     }
     
     public boolean isConnected() {
-    	return getUser() == null;
+    	return getUser() != null;
     }
     
 	public Person getUser() {
