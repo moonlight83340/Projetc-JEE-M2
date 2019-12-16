@@ -1,4 +1,4 @@
-package myapp.services;
+package myapp.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import myapp.model.Person;
+import myapp.services.PersonManager;
 
 @ManagedBean(name = "person")
 @SessionScoped
@@ -60,4 +61,7 @@ public class PersonController {
 		return "editPerson?faces-redirect=true";
 	}
 
+	public String editPerson() {
+		return "editPerson?faces-redirect=true";
+	}
 }
