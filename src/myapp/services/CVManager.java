@@ -47,11 +47,6 @@ public class CVManager implements IManager<CV>{
 	}
 
 	@Override
-	public List<CV> findLike(String patern) {
-		return null;
-	}
-
-	@Override
 	public CV create() {
 		return new CV();
 	}

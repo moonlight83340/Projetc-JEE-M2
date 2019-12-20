@@ -9,7 +9,6 @@ public interface IManager<T> {
 	public T create();
     public T find(Integer id);
     public List<T> findAll();
-    public List<T> findLike(String patern);
 
     public T save(T t);
 
