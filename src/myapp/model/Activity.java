@@ -12,10 +12,27 @@ import javax.validation.constraints.NotNull;
 @Entity()
 @Table(name = "T_Activity")
 public class Activity implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    
+    public Activity() {
+    	
+    }
+    
+    public Activity(Integer year, String nature, String title, String description, String webAdress) {
+		this.year = year;
+		this.nature = nature;
+		this.title = title;
+		this.description = description;
+		this.webAdress = webAdress;
+	}
+    
+    public Activity(Integer year, String nature, String title) {
+		this.year = year;
+		this.nature = nature;
+		this.title = title;
+	}
 
-    @Id()
+	@Id()
     @GeneratedValue
     private Integer id;
 
@@ -45,7 +62,47 @@ public class Activity implements Serializable {
         this.id = id;
     }
 
-    @Override
+    public String getNature() {
+		return nature;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public void setNature(String nature) {
+		this.nature = nature;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getWebAdress() {
+		return webAdress;
+	}
+
+	public void setWebAdress(String webAdress) {
+		this.webAdress = webAdress;
+	}
+
+	@Override
     public boolean equals(Object obj) {
     	if(obj instanceof Activity)
     		if(((Activity) obj).getId() == this.getId())

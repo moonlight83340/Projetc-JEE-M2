@@ -15,9 +15,6 @@ import static org.junit.Assert.assertNotNull;
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 
-import org.junit.After;
-import org.junit.Before;
-
 class TestCVManager {
 	    @EJB
 	    CVManager pm;
