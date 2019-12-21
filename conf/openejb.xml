@@ -6,4 +6,11 @@
         Password
         JtaManaged false
     </Resource>
+        <Resource id="MyDataSourceTest" type="DataSource">
+        JdbcDriver org.hsqldb.jdbcDriver
+        JdbcUrl jdbc:hsqldb:file:data/maBaseTest;shutdown=true;hsqldb.write_delay=false
+        UserName sa
+        Password
+        JtaManaged false
+    </Resource>
 </openejb>

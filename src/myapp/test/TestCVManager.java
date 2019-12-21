@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import myapp.model.Activity;
 import myapp.model.CV;
 import myapp.services.CVManager;
 
@@ -15,9 +16,10 @@ import static org.junit.Assert.assertNotNull;
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 
-import org.junit.After;
-import org.junit.Before;
-
+/**
+ * @author Gaëtan
+ * ToDo Test Activity's functions
+ */
 class TestCVManager {
 	    @EJB
 	    CVManager pm;
@@ -43,37 +45,48 @@ class TestCVManager {
 	    	CV c = new CV();
 	    	return c;
 	    }
-
-	    @Test
-	    public void testFindCourses() {
-	    	//assert(!pm.findAll().isEmpty());
-	    }
+	    
+		public CV createNewDefaultActivityInit() {
+			CV c = new CV();
+			return c;
+		}
 
 	    @Test
 	    public void testAddCV() {
 	    	CV c = createNewCV();
-	    	assertNotNull(c);
+	    	c = pm.save(c);
+	    	CV same = pm.find(c.getId());
+			assertNotNull(same);
 	    }
 	    
 	    @Test
-	    public void testBadAddCV() {
-	    	//CV c = createNewCV();
+	    public void testFindAllCV() {
+	        assertNotNull(pm);
+	        CV c = createNewDefaultActivityInit();
+	        c = pm.save(c);
+
+	        CV c2 = createNewDefaultActivityInit();
+	        c2 = pm.save(c2);
+	        
+			assert (!pm.findAll().isEmpty());
 	    }
-	    
-	    @Test
-	    public void testUpdateCV() {
-	    	//CV c = createNewCV();
-	    }
-	    
+   
 	    @Test
 	    public void testRemoveCV() {
-	    	//CV c = createNewCV();
+	    	CV c = createNewDefaultActivityInit();
+	    	c = pm.save(c);		
+			pm.delete(c);			
+			CV same = pm.find(c.getId());
+			assertNull(same);
 	    }
-	
+	    
 	    @Test
-	    public void testBadRemoveCV() {
-	    	//CV c = createNewCV();
-	    }
-	
-
+		public void testSaveCVMerge() {
+	    	CV c = createNewDefaultActivityInit();
+	    	c = pm.save(c);	
+	    	c.setId(2);
+	    	c = pm.save(c);	
+			CV same = pm.find(c.getId());
+			assertNotNull(same);
+		}
 }

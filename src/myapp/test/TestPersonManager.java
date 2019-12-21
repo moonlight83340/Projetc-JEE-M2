@@ -19,9 +19,6 @@ import static org.junit.Assert.assertNotNull;
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 
-import org.junit.After;
-import org.junit.Before;
-
 class TestPersonManager {
 
 	@EJB
@@ -41,12 +38,11 @@ class TestPersonManager {
 
     @BeforeEach
     public void before() throws Exception {
-        container.getContext().bind("inject", this);
-        
+        container.getContext().bind("inject", this);    
     }
 
 	public Person createNewPerson() {
-		Person p = new Person();
+		Person p = pm.create();
 		return p;
 	}
 

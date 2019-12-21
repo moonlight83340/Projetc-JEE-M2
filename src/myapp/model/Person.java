@@ -11,9 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity()
-@Table(name = "T_Person")
+@Table(name = "T_Person"/*,uniqueConstraints={@UniqueConstraint(columnNames = "email")}*/)
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class Person implements Serializable {
     @Column(name = "firstname")
     private String firstname;
     
-    @Column(name = "email")
+    @Column(name = "email"/*,unique = true*/)
     private String email;
     
     @Column(name = "website")
