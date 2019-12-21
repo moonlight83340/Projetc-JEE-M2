@@ -1,14 +1,13 @@
 package myapp.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import myapp.model.Person;
 import myapp.services.PersonManager;
@@ -21,6 +20,9 @@ public class PersonController {
 	PersonManager pm;
 
 	Person thePerson = new Person();
+	List<Person> wantedPersons = new ArrayList<Person>();
+	
+	String filterText = "";
 
 	@PostConstruct
 	public void init() {
@@ -36,14 +38,37 @@ public class PersonController {
 			
 			pm.save(p1);
 		}
+		
+		wantedPersons = getPersons();
 	}
 
 	public List<Person> getPersons() {
 		return pm.findAll();
 	}
 
+	public List<Person> getWantedPersons() {
+		return wantedPersons;
+	}
+	
+	public String getFilterText() {
+		return filterText;
+	}
+	
 	public Person getThePerson() {
 		return thePerson;
+	}
+	
+	public void setFilterText(String filter) {
+		this.filterText = filter;
+	}
+
+	public String updatePersonsWithFilter() {
+		if(filterText == "") {
+			this.wantedPersons = pm.findAll();
+		}else{
+			this.wantedPersons = pm.findLike(filterText);
+		}
+		return filterText;
 	}
 
 	public String show(Integer n) {

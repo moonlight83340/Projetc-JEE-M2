@@ -20,7 +20,6 @@
 						styleClass="form-control" required="true"
 						requiredMessage="Le prénom est obligatoire">
 						<f:validateLength minimum="1" />
-						<f:validateRegex pattern="((?=([A-Z]).*[a-z]).)" />
 					</h:inputText>
 					<h:message styleClass="label label-danger" for="firstname" />
 				</div>
@@ -31,7 +30,6 @@
 						styleClass="form-control" required="true"
 						requiredMessage="Le nom est obligatoire">
 						<f:validateLength minimum="1" />
-						<f:validateRegex pattern="((?=([A-Z]).*[a-z]).)" />
 					</h:inputText>
 					<h:message styleClass="label label-danger" for="lastname" />
 				</div>
@@ -54,11 +52,8 @@
 					<h:inputText id="website" value="#{p.website}"
 						styleClass="form-control"
 						validatorMessage="Le format ne correspond pas à une URL">
-						<f:validateLength minimum="3" />
-						<f:validateRegex
-							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 					</h:inputText>
-					<h:message styleClass="label label-danger" for="email" />
+					<h:message styleClass="label label-danger" for="website" />
 				</div>
 
 
@@ -68,7 +63,8 @@
 					<h:commandButton action="#{person.save()}"
 						styleClass="btn btn-primary" value="Sauvegarder" />
 					<span> </span>
-					<h:link styleClass="btn btn-info" outcome="home" value="Quitter" />
+					<h:commandLink action="#{navigation.home}" styleClass="btn btn-danger"
+						value="Quitter" />
 				</div>
 			</h:form>
 

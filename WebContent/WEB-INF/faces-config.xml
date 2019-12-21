@@ -15,8 +15,8 @@
             myapp.resources.messages
         </message-bundle>
         <locale-config>
-            <default-locale>en</default-locale>
-            <supported-locale>fr</supported-locale>
+            <default-locale>fr</default-locale>
+            <supported-locale>en</supported-locale>
         </locale-config>
     </application>
     
@@ -34,7 +34,16 @@
 	    <from-view-id>/persons.xhtml</from-view-id>
 	    <navigation-case>
 	        <from-outcome>persons</from-outcome>
-	        <to-view-id>/persons.xhtml</to-view-id>
+	        <to-view-id>/persons.jsf</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <display-name>CVs</display-name>
+	    <from-view-id>/cvs.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>cvs</from-outcome>
+	        <to-view-id>/cvs.jsf</to-view-id>
 	    </navigation-case>
 	</navigation-rule>
 	

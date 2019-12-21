@@ -10,10 +10,35 @@
 		<f:view>
 
 			<h1>Liste des personnes :</h1>
+
 			<h:form>
-				<h:dataTable value="#{person.persons}" var="o"
-					styleClass="table table-hover" headerClass="danger"
-					footerClass="danger" rowClasses="success,warning">
+				<h:panelGrid columns="3" style="width:100%;">
+
+					<h:panelGrid columns="1" style="width:50%;">
+						<h:commandLink styleClass="btn btn-success"
+							action="#{person.newPerson()}" value="+" />
+					</h:panelGrid>
+
+					<!-- Right Align ( Controls )-->
+					<h:panelGrid columns="2"
+						style="width:50%; text-align:right; float:right;">
+
+						<h:inputText id="filter" value="#{person.filterText}"
+							styleClass="form-control" placeholder="Filtrer">
+							</h:inputText>
+
+						<h:commandButton value="Valider"
+							action="#{person.updatePersonsWithFilter}"
+							styleClass="form-control btn btn-success">
+							<f:ajax execute="@this" render="@form" />
+							</h:commandButton>
+
+					</h:panelGrid>
+				</h:panelGrid>
+
+				<h:dataTable value="#{person.wantedPersons}" var="o"
+					styleClass="table table-hover" footerClass="danger"
+					rowClasses="success,warning">
 
 					<h:column>
 						<f:facet name="header">Prénom</f:facet>
@@ -33,10 +58,6 @@
 							action="#{person.show(o.id)}" />
 					</h:column>
 				</h:dataTable>
-				<p>
-					<h:commandButton styleClass="btn btn-success"
-						action="#{person.newPerson()}" value="New Person" />
-				</p>
 			</h:form>
 
 		</f:view>
