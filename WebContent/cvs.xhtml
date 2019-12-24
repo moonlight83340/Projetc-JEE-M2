@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="content">
+		<f:view>
+
+			<h1>Liste des personnes :</h1>
+
+			<h:form>
+
+				<h:dataTable value="#{cv.wanteds}" var="o"
+					styleClass="table table-hover" footerClass="danger"
+					rowClasses="success,warning">
+
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{o.id}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Action</f:facet>
+						<h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
+							action="#{cv.show(o.id)}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+
+		</f:view>
+	</ui:define>
+</ui:composition>
+
+</html>

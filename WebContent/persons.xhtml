@@ -15,8 +15,10 @@
 				<h:panelGrid columns="3" style="width:100%;">
 
 					<h:panelGrid columns="1" style="width:50%;">
-						<h:commandLink styleClass="btn btn-success"
-							action="#{person.newPerson()}" value="+" />
+						<c:if test="#{true}">
+							<h:commandLink styleClass="btn btn-success"
+								action="#{person.newInstance()}" value="+" />
+						</c:if>
 					</h:panelGrid>
 
 					<!-- Right Align ( Controls )-->
@@ -25,17 +27,17 @@
 
 						<h:inputText id="filter" value="#{person.filterText}"
 							styleClass="form-control" placeholder="Filtrer">
-							</h:inputText>
+						</h:inputText>
 
 						<h:commandButton value="Valider"
-							action="#{person.updatePersonsWithFilter}"
+							action="#{person.updateWithFilter}"
 							styleClass="form-control btn btn-success">
-							</h:commandButton>
+						</h:commandButton>
 
 					</h:panelGrid>
 				</h:panelGrid>
 
-				<h:dataTable value="#{person.wantedPersons}" var="o"
+				<h:dataTable value="#{person.wanteds}" var="o"
 					styleClass="table table-hover" footerClass="danger"
 					rowClasses="success,warning">
 

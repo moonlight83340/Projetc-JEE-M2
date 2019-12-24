@@ -9,18 +9,20 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import myapp.model.CV;
 import myapp.model.Person;
+import myapp.services.CVManager;
 import myapp.services.PersonManager;
 
-@ManagedBean(name = "person")
+@ManagedBean(name = "cv")
 @SessionScoped
-public class PersonController implements Controller<Person>{
+public class CvController implements Controller<CV>{
 
 	@EJB
-	PersonManager manager;
+	CVManager manager;
 
-	Person theInstance = new Person();
-	List<Person> wanteds = new ArrayList<Person>();
+	CV theInstance = new CV();
+	List<CV> wanteds = new ArrayList<CV>();
 	
 	String filterText = "";
 
@@ -28,30 +30,31 @@ public class PersonController implements Controller<Person>{
 	public void init() {
 		System.out.println("Create " + this);
 		if (manager.findAll().size() == 0) {
-			Person p1 = new Person();
+			CV c1 = new CV();
 			
-			p1.setLastname("lastname");
-			p1.setFirstname("firstname");
-			p1.setEmail("lastname.firstname@a.fr");
-			p1.setBirthDate(new Date());
-			p1.setPassword("password");
 			
-			manager.save(p1);
+			
+			manager.save(c1);
 		}
 		
 		wanteds = getAll();
 	}
 
-	public List<Person> getWanteds() {
-		return wanteds;
+	@Override
+	public List<CV> getAll() {
+		return manager.findAll();
 	}
-	
-	public Person getTheInstance() {
-		return theInstance;
+
+	public List<CV> getWanteds() {
+		return wanteds;
 	}
 	
 	public String getFilterText() {
 		return filterText;
+	}
+	
+	public CV getTheInstance() {
+		return theInstance;
 	}
 	
 	public void setFilterText(String filter) {
@@ -61,38 +64,29 @@ public class PersonController implements Controller<Person>{
 	@Override
 	public String show(Integer n) {
 		theInstance = manager.find(n);
-		return "showPerson";
+		return "showCV";
 	}
-
+	
 	@Override
 	public String save() {
 		manager.save(theInstance);
-		return "showPerson";
+		return "showCV";
 	}
 
-	@Override
-	public List<Person> getAll() {
-		return manager.findAll();
-	}
 
 	@Override
 	public String updateWithFilter() {
-		if(filterText == "") {
-			this.wanteds = manager.findAll();
-		}else{
-			this.wanteds = manager.findLike(filterText);
-		}
-		return filterText;
+		return null;
 	}
 
 	@Override
 	public String edit() {
-		return "editPerson?faces-redirect=true";
+		return "editCV?faces-redirect=true";
 	}
 
 	@Override
 	public String newInstance() {
-		theInstance = new Person();
-		return "editPerson?faces-redirect=true";
+		theInstance = new CV();
+		return "editCV?faces-redirect=true";
 	}
 }
