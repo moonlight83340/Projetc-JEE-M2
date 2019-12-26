@@ -35,6 +35,16 @@
 				</div>
 
 				<div class="form-group">
+					<label for="birthdate">Date de naissance :</label>
+					<h:inputText id="birthdate" value="#{p.birthDate}"
+						styleClass="form-control"
+						validatorMessage="Le format ne correspond pas à une date">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText>
+					<h:message styleClass="label label-danger" for="birthdate" />
+				</div>
+
+				<div class="form-group">
 					<label for="email">Email :</label>
 					<h:inputText id="email" value="#{p.email}"
 						styleClass="form-control" required="true"
@@ -48,23 +58,23 @@
 				</div>
 
 				<div class="form-group">
-					<label for="website">Website :</label>
+					<label for="website">Site Web :</label>
 					<h:inputText id="website" value="#{p.website}"
 						styleClass="form-control"
 						validatorMessage="Le format ne correspond pas à une URL">
+
+						<f:validator validatorId="urlValidator" />
+
 					</h:inputText>
 					<h:message styleClass="label label-danger" for="website" />
 				</div>
-
-
-
 
 				<div class="form-group">
 					<h:commandButton action="#{person.save()}"
 						styleClass="btn btn-primary" value="Sauvegarder" />
 					<span> </span>
-					<h:commandLink action="#{navigation.home}" styleClass="btn btn-danger"
-						value="Quitter" />
+					<h:commandLink action="#{navigation.home}"
+						styleClass="btn btn-danger" value="Quitter" />
 				</div>
 			</h:form>
 
