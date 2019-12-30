@@ -67,6 +67,7 @@ public class PersonController implements Controller<Person>{
 	@Override
 	public String save() {
 		manager.save(theInstance);
+		wanteds = getAll();
 		return "showPerson";
 	}
 
