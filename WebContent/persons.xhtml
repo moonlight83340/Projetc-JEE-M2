@@ -37,28 +37,30 @@
 					</h:panelGrid>
 				</h:panelGrid>
 
-				<h:dataTable value="#{person.wanteds}" var="o"
-					styleClass="table table-hover" footerClass="danger"
-					rowClasses="success,warning">
+				<h:panelGrid rendered="#{person.wanteds.size() > 0}">
+					<h:dataTable value="#{person.wanteds}" var="o"
+						styleClass="table table-hover" footerClass="danger"
+						rowClasses="success,warning">
 
-					<h:column>
-						<f:facet name="header">Prénom</f:facet>
-						<h:outputText value="#{o.firstname}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Nom de famille</f:facet>
-						<h:outputText value="#{o.lastname}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Email</f:facet>
-						<h:outputText value="#{o.email}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Action</f:facet>
-						<h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
-							action="#{person.show(o.id)}" />
-					</h:column>
-				</h:dataTable>
+						<h:column>
+							<f:facet name="header">Prénom</f:facet>
+							<h:outputText value="#{o.firstname}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nom de famille</f:facet>
+							<h:outputText value="#{o.lastname}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							<h:outputText value="#{o.email}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Action</f:facet>
+							<h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
+								action="#{person.show(o.id)}" />
+						</h:column>
+					</h:dataTable>
+				</h:panelGrid>
 			</h:form>
 
 		</f:view>

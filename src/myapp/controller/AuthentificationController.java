@@ -19,7 +19,10 @@ public class AuthentificationController {
 	@EJB 
 	PersonManager pm;
 	
-	
+	public void login() {
+		
+
+	}
 
 	
 }

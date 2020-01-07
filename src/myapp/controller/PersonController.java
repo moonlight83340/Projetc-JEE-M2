@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -42,6 +43,7 @@ public class PersonController implements Controller<Person>{
 		wanteds = getAll();
 	}
 
+	@PermitAll
 	public List<Person> getWanteds() {
 		return wanteds;
 	}
@@ -59,6 +61,7 @@ public class PersonController implements Controller<Person>{
 	}
 
 	@Override
+	@PermitAll
 	public String show(Integer n) {
 		theInstance = manager.find(n);
 		return "showPerson";
