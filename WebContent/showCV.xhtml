@@ -10,36 +10,44 @@
 		<f:view>
 
 			<h1>Liste des Activitées :</h1>
-	
+
 			<h:form>
 
 				<!-- afficher les villes si elles existent -->
 
-					<table class="table">
-						<ui:repeat id="activity" var="activity" varStatus="a"
-							value="#{activityAjaxBean.activities}">
-							<tr>
-								<td><h:outputText value="#{a.year}" /></td>
-								<td><h:outputText value="#{a.title}" /></td>
-								<td><h:outputText value="#{a.nature}" /></td>
-								<td><h:commandButton value="modification"
-										action="#{activityAjaxBean.updateActivity(a.id)}"
-										styleClass="btn btn-success btn-xs">
-										<f:ajax execute="@this" render="@form" />
-									</h:commandButton></td>
-								<td><h:commandButton value="Supprimer"
-										action="#{activityAjaxBean.removeActivity(a.id)}"
-										styleClass="btn btn-success btn-xs">
-										<f:ajax execute="@this" render="@form" />
-									</h:commandButton></td>
+				<table class="table">
+					<ui:repeat id="activity" var="activity" varStatus="a"
+						value="#{activityAjaxBean.activities}">
+						<tr>
+							<td><h:outputText value="#{a.year}" /></td>
+							<td><h:outputText value="#{a.title}" /></td>
+							<td><h:outputText value="#{a.nature}" /></td>
+							<td><h:commandButton value="modification"
+									action="#{activityAjaxBean.updateActivity(a.id)}"
+									styleClass="btn btn-success btn-xs">
+									<f:ajax execute="@this" render="@form" />
+								</h:commandButton></td>
+							<td><h:commandButton value="Supprimer"
+									action="#{activityAjaxBean.removeActivity(a.id)}"
+									styleClass="btn btn-success btn-xs">
+									<f:ajax execute="@this" render="@form" />
+								</h:commandButton></td>
 
-							</tr>
-						</ui:repeat>
-					</table>
+						</tr>
+					</ui:repeat>
+				</table>
 
+				<h:panelGrid rendered="#{activityAjaxBean.activities.size() == 0}">
+					<h5 style="text-align: center;">Aucune activité n'a été
+						trouvée !</h5>
+				</h:panelGrid>
 
 				<!-- formulaire pour ajouter une ville -->
 				<div class="form-group">
+					<h3>
+						<h:outputText
+							value="#{activityAjaxBean.buttonText} une activité :"></h:outputText>
+					</h3>
 					<div class="form-group">
 						<label for="activityTitle">Titre :</label>
 						<h:inputText id="activityTitle"
@@ -47,37 +55,37 @@
 							<f:validateLength minimum="3" />
 						</h:inputText>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="activityNature">Nature :</label>
-					<h:inputText id="activityNature"
-						value="#{activityAjaxBean.natureText}" styleClass="form-control">
-						<f:validateLength minimum="3" />
-					</h:inputText>
+						<h:inputText id="activityNature"
+							value="#{activityAjaxBean.natureText}" styleClass="form-control">
+							<f:validateLength minimum="3" />
+						</h:inputText>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="activityYear">Year :</label>
-					<h:inputText id="activityYear"
-						value="#{activityAjaxBean.yearValue}" styleClass="form-control">
-					</h:inputText>
+						<h:inputText id="activityYear"
+							value="#{activityAjaxBean.yearValue}" styleClass="form-control">
+						</h:inputText>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="activityDescription">Description :</label>
-					<h:inputText id="activityDescription"
-						value="#{activityAjaxBean.descriptionText}"
-						styleClass="form-control">
-					</h:inputText>
+						<h:inputText id="activityDescription"
+							value="#{activityAjaxBean.descriptionText}"
+							styleClass="form-control">
+						</h:inputText>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="activityTitle">Adresse web :</label>
-					<h:inputText id="activityWebAdress"
-						value="#{activityAjaxBean.webAdressText}"
-						styleClass="form-control">
-						<f:validator validatorId="urlValidator" />
-					</h:inputText>
+						<h:inputText id="activityWebAdress"
+							value="#{activityAjaxBean.webAdressText}"
+							styleClass="form-control">
+							<f:validator validatorId="urlValidator" />
+						</h:inputText>
 					</div>
 					<h:message id="messageActivity" for="activity"
 						styleClass="label label-danger" />
