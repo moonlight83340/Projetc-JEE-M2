@@ -61,6 +61,11 @@
 						</h:column>
 					</h:dataTable>
 				</h:panelGrid>
+				
+				<h:panelGrid rendered="#{person.wanteds.size() == 0}">
+					<h:outputText style="text-align:center;" value="Aucune personne n'a été trouvée !">
+					</h:outputText>
+				</h:panelGrid>
 			</h:form>
 
 		</f:view>

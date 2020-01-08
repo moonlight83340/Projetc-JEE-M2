@@ -1,15 +1,13 @@
 package myapp.controller;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Year;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
 
 import myapp.model.Activity;
 
@@ -18,7 +16,9 @@ import myapp.model.Activity;
 public class ActivityAjaxBean implements Serializable {
 
     private static final long serialVersionUID = 5443351151396868724L;
-
+    
+    
+    
 	private String natureText = "";
     private Integer yearValue = 0;
     private String titleText = "";
@@ -48,6 +48,7 @@ public class ActivityAjaxBean implements Serializable {
 	}
 
 	public ActivityAjaxBean() {
+		//activities = cvController.theInstance.getActivities();
     }
 	
     public void addActivity() {
@@ -55,31 +56,48 @@ public class ActivityAjaxBean implements Serializable {
     		activities.set(updateIndex, createActivity());
     		addMode = true;
     		updateIndex = -1;
-    		setButtonText("Add");
-    		text = "";
+    		setButtonText("Ajouter");
+    		resetActivity();
     	}
-    	else if (text.trim().length() > 0) {
-    		activities.add(text);
-            System.err.println("add " + text);
-            text = "";
+    	else if (checkActivity()) {
+    		activities.add(createActivity());
+    		resetActivity();
         }
         
     }
 
-    public void removeCity(int index) {
-        cities.remove(index);
-        text = "";
+    public void removeActivity(int index) {
+        activities.remove(index);
+        resetActivity();
         addMode = true;
-        setButtonText("Add");
+        setButtonText("Ajouter");
     }
     
-    public void updateCity(int index) {
-    	text = cities.get(index);
+    public void updateActivity(int index) {
+    	Activity activity = activities.get(index);
+    	setActivity(activity);
     	updateIndex = index;
     	addMode = false;
-    	setButtonText("Update");
+    	setButtonText("Mettre à jour");
     }
 
+    private boolean checkActivity() {
+    	boolean isCorrect = true;
+    	
+    	if(yearValue < 1900 || yearValue > Year.now().getValue()) {
+    		isCorrect = false;
+    	}
+    	
+    	if(titleText.trim().length() == 0) {
+    		isCorrect = false;
+    	}
+    	
+      	if(natureText.trim().length() == 0) {
+    		isCorrect = false;
+    	}
+    	
+    	return isCorrect;
+    }
     
     public Activity createActivity() {
     	Activity activity = new Activity();
@@ -93,6 +111,21 @@ public class ActivityAjaxBean implements Serializable {
     	return activity;
     }
     
+    public void setActivity(Activity activity) {
+        yearValue = activity.getYear();
+        natureText = activity.getNature();
+		titleText = activity.getTitle();
+		descriptionText = activity.getDescription();
+		webAdressText = activity.getWebAdress();
+    }
+    
+    public void resetActivity() {
+        yearValue = 0;
+        natureText = "";
+		titleText = "";
+		descriptionText = "";
+		webAdressText = "";
+    }
     
     public List<Activity> getActivities() {
 		return activities;
