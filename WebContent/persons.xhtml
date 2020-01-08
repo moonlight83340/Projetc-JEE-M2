@@ -37,7 +37,7 @@
 					</h:panelGrid>
 				</h:panelGrid>
 
-				<h:panelGrid rendered="#{person.wanteds.size() > 0}">
+				<h:panelGrid rendered="#{person.wanteds.size() > 0}" style="width:100%;">
 					<h:dataTable value="#{person.wanteds}" var="o"
 						styleClass="table table-hover" footerClass="danger"
 						rowClasses="success,warning">
