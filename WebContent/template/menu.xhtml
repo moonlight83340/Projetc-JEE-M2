@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<ui:composition>
-    <ul class="dropdown-menu">
-    	<li>lien 1</li>
-    	<li>lien 2</li>
-    </ul>
-</ui:composition>
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:composition>
+		<li>
+			<h:link outcome="/index">
+				Accueil
+			</h:link>
+		</li>	
+		<li>
+			<a href="index.xhtml">Accueil</a>
+		</li>
+		<li>
+			<a href="persons.xhtml">Personnes</a>
+		</li>
+       	<li>
+       		<a href="cvs.xhtml">CVs</a>
+		</li>
+		<c:choose>
+			<c:when test="#{!user.logged}">
+				<li>
+					<a href="signin.xhtml">Connexion</a>
+				</li>					
+			</c:when>
+			<c:otherwise>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">
+					firstname lastname
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<h:link action="">Mon profil</h:link>
+					</li>
+					<li role="separator" class="divider"></li>
+					<li>
+						<h:commandLink action="#{user.logout}">
+							Déconnexion
+						</h:commandLink>
+					</li>
+				</ul>
+			</li>				
+			</c:otherwise>
+		</c:choose>
+	</ui:composition>
 </html>
