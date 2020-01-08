@@ -29,6 +29,7 @@ public class PersonController implements Controller<Person>{
 	public void init() {
 		System.out.println("Create " + this);
 		if (manager.findAll().size() == 0) {
+			System.out.println("DB Vide je crée personne");
 			Person p1 = new Person();
 			
 			p1.setLastname("lastname");

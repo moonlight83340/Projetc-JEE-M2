@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import myapp.model.Activity;
+import myapp.services.ActivityManager;
+import myapp.services.CVManager;
 
 @ManagedBean
 @ViewScoped
@@ -17,7 +19,8 @@ public class ActivityAjaxBean implements Serializable {
 
     private static final long serialVersionUID = 5443351151396868724L;
     
-    
+    @EJB
+    private ActivityManager manager;
     
 	private String natureText = "";
     private Integer yearValue = 0;
@@ -52,15 +55,17 @@ public class ActivityAjaxBean implements Serializable {
     }
 	
     public void addActivity() {
+    	Activity activity = createActivity();
     	if(addMode != true) {
-    		activities.set(updateIndex, createActivity());
+    		activities.set(updateIndex, activity);
+    		manager.save(activity);
     		addMode = true;
     		updateIndex = -1;
     		setButtonText("Ajouter");
     		resetActivity();
     	}
     	else if (checkActivity()) {
-    		activities.add(createActivity());
+    		activities.add(activity);
     		resetActivity();
         }
         

@@ -3,30 +3,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-	<ui:composition template="/template/mylayout.xhtml">
-		<ui:define name="title">Connexion</ui:define>
-		<ui:define name="content">
+
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="title">Connexion</ui:define>
+	<ui:define name="content">
+
+		<div class="container">
 			<h2>Connexion</h2>
-			
-			<div class="container">
 			<h:form>
 				<div class="form-group">
 					<label>Email address</label>
 					<h:inputText id="email" value="" class="form-control">
-					<f:validateRequired />
-					
+						<f:validateRequired />
+
 					</h:inputText>
 				</div>
 				<div class="form-group">
 					<label>Password</label>
 					<h:inputSecret id="password" value="" class="form-control">
-					<f:validateRequired />
+						<f:validateRequired />
 					</h:inputSecret>
 				</div>
-				<h:commandButton value="Connexion" action="signin.xhtml"/>
+				<h:commandButton value="Connexion" styleClass="btn btn-sucess"
+					action="signin.xhtml" />
 			</h:form>
-			</div>
-		</ui:define>
-	</ui:composition>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>
