@@ -11,13 +11,16 @@
 			</h:link>
 		</li>	
 		<li>
+			<a href="index.xhtml">Accueil</a>
+		</li>
+		<li>
 			<a href="persons.xhtml">Personnes</a>
 		</li>
        	<li>
        		<a href="cvs.xhtml">CVs</a>
 		</li>
 		<c:choose>
-			<c:when test="#{!user.logged}">
+			<c:when test="#{!userAuth.isLogged}">
 				<li>
 					<a href="signin.xhtml">Connexion</a>
 				</li>					
@@ -32,11 +35,11 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<h:link action="">Mon profil</h:link>
+						<h:link action="#{person.show(o.id)}">Mon profil</h:link>
 					</li>
 					<li role="separator" class="divider"></li>
 					<li>
-						<h:commandLink action="#{user.logout}">
+						<h:commandLink action="#{userAuth.logout}">
 							Déconnexion
 						</h:commandLink>
 					</li>

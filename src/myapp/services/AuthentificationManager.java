@@ -5,7 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import myapp.model.Person;
 
-@Stateful(name="userAuth")
+@Stateful
 @SessionScoped
 public class AuthentificationManager implements IAuthentificationManager{
     
@@ -21,7 +21,7 @@ public class AuthentificationManager implements IAuthentificationManager{
     	System.out.println("User disconnected");
     }
     
-    public boolean isConnected() {
+    public boolean isLogged() {
     	return getUser() != null;
     }
     

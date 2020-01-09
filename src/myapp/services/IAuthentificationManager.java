@@ -10,5 +10,5 @@ public interface IAuthentificationManager {
     
     public void logout();
     
-    public boolean isConnected();
+    public boolean isLogged();
 }

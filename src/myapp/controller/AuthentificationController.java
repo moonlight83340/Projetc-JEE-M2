@@ -9,7 +9,7 @@ import myapp.model.Person;
 import myapp.services.AuthentificationManager;
 import myapp.services.PersonManager;
 
-@ManagedBean(name = "authentification")
+@ManagedBean(name = "userAuth")
 @SessionScoped
 public class AuthentificationController {
 
@@ -20,9 +20,15 @@ public class AuthentificationController {
 	PersonManager pm;
 	
 	public void login() {
-		
-
+		//am.login(user);
 	}
 
+    public void logout() {
+    	am.logout();
+    }
+	
+	public boolean isLogged() {
+		return am.isLogged();
+	}
 	
 }
