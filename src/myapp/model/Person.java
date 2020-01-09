@@ -46,6 +46,9 @@ public class Person implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private CV cv;
 	
+	@Column()
+	private String signUpToken;
+	
 	@ManyToOne()
 	@JoinColumn()
 	private Person invitedBy;
@@ -136,6 +139,22 @@ public class Person implements Serializable {
 		this.cv = cv;
 	}
 	
+	public String getSignUpToken() {
+		return signUpToken;
+	}
+
+	public void setSignUpToken(String signUpToken) {
+		this.signUpToken = signUpToken;
+	}
+
+	public Person getInvitedBy() {
+		return invitedBy;
+	}
+
+	public void setInvitedBy(Person invitedBy) {
+		this.invitedBy = invitedBy;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (! (obj instanceof Person) ) return false;
