@@ -18,12 +18,11 @@ import myapp.services.PersonManager;
 public class PersonController implements Controller<Person>{
 
 	@EJB
-	PersonManager manager;
+	private PersonManager manager;
 
-	Person theInstance = new Person();
-	List<Person> wanteds = new ArrayList<Person>();
-	
-	String filterText = "";
+	private Person theInstance = new Person();
+	private List<Person> wanteds = new ArrayList<Person>();
+	private String filterText = "";
 
 	@PostConstruct
 	public void init() {

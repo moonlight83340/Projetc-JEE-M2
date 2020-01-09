@@ -5,7 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import myapp.model.Person;
 
-@Stateful
+@Stateful(name = "userAuth")
 @SessionScoped
 public class AuthentificationManager implements IAuthentificationManager{
     
