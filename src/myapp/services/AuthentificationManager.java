@@ -1,14 +1,17 @@
 package myapp.services;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
-import javax.faces.bean.SessionScoped;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import org.mindrot.jbcrypt.BCrypt;
 
 import myapp.model.Person;
 
 @Stateful
-@SessionScoped
+@TransactionManagement(TransactionManagementType.CONTAINER)
+@LocalBean
 public class AuthentificationManager implements IAuthentificationManager{
     
 	@EJB
