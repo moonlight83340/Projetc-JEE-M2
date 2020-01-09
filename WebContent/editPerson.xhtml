@@ -15,7 +15,7 @@
 				<c:set var="p" value="#{person.theInstance}" />
 
 				<div class="form-group">
-					<label for="firstname">Prénom :</label>
+					<label for="firstname">Prénom : <span style="color:red;">*</span></label>
 					<h:inputText id="firstname" value="#{p.firstname}"
 						styleClass="form-control" required="true"
 						requiredMessage="Le prénom est obligatoire">
@@ -25,7 +25,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="lastname">Nom :</label>
+					<label for="lastname">Nom : <span style="color:red;">*</span></label>
 					<h:inputText id="lastname" value="#{p.lastname}"
 						styleClass="form-control" required="true"
 						requiredMessage="Le nom est obligatoire">
@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="birthdate">Date de naissance :</label>
+					<label for="birthdate">Date de naissance : <span style="color:red;">*</span></label>
 					<h:inputText id="birthdate" value="#{p.birthDate}"
 						styleClass="form-control"
 						validatorMessage="Le format ne correspond pas à une date">
@@ -45,7 +45,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="email">Email :</label>
+					<label for="email">Email : <span style="color:red;">*</span></label>
 					<h:inputText id="email" value="#{p.email}"
 						styleClass="form-control" required="true"
 						requiredMessage="L'email est obligatoire"
@@ -75,7 +75,7 @@
 						styleClass="btn btn-danger" value="Quitter" />
 				</div>
 			</h:form>
-
+			<h:outputText style="color:red;" value="Les champs suivi d'un * sont obligatoires !"> </h:outputText>
 
 		</f:view>
 	</ui:define>

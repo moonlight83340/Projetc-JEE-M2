@@ -53,7 +53,7 @@
 							value="#{activityAjaxBean.buttonText} une activité :"></h:outputText>
 					</h3>
 					<div class="form-group">
-						<label for="activityTitle">Titre :</label>
+						<label for="activityTitle">Titre : <span style="color:red;">*</span></label>
 						<h:inputText id="activityTitle"
 							value="#{activityAjaxBean.titleText}" styleClass="form-control">
 							<f:validateLength minimum="3" />
@@ -61,7 +61,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="activityNature">Nature :</label>
+						<label for="activityNature">Nature : <span style="color:red;">*</span></label>
 						<h:inputText id="activityNature"
 							value="#{activityAjaxBean.natureText}" styleClass="form-control">
 							<f:validateLength minimum="3" />
@@ -69,7 +69,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="activityYear">Year :</label>
+						<label for="activityYear">Year : <span style="color:red;">*</span></label>
 						<h:inputText id="activityYear"
 							value="#{activityAjaxBean.yearValue}" styleClass="form-control">
 						</h:inputText>
@@ -100,6 +100,8 @@
 					<f:ajax execute="@this activity" render="@form" />
 				</h:commandButton>
 			</h:form>
+			<h:outputText style="color:red;" value="Les champs suivi d'un * sont obligatoires !"> </h:outputText>
+			
 		</f:view>
 	</ui:define>
 </ui:composition>

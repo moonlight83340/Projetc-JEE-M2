@@ -10,6 +10,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import myapp.model.Activity;
+import myapp.model.CV;
 import myapp.model.Person;
 import myapp.services.PersonManager;
 
@@ -36,6 +38,10 @@ public class PersonController implements Controller<Person>{
 			p1.setEmail("lastname.firstname@a.fr");
 			p1.setBirthDate(new Date());
 			p1.setPassword("password");
+			
+			CV cv = new CV();
+			cv.addActivity(new Activity(1990, "nature", "title"));
+			p1.setCv(cv);
 			
 			manager.save(p1);
 		}

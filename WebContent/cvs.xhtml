@@ -13,18 +13,18 @@
 
 			<h:form>
 
-				<h:panelGrid rendered="#{cv.wanteds.size() > 0}" style="width:100%;">
-					<h:dataTable value="#{cv.wanteds}" var="c"
+				<h:panelGrid rendered="#{person.all.size() > 0}" style="width:100%;">
+					<h:dataTable value="#{person.all}" var="p"
 						styleClass="table table-hover" footerClass="danger"
 						rowClasses="success,warning">
 
 						<h:column>
 							<f:facet name="header">Personne</f:facet>
-							<h:outputText value="#{person.theInstance.lastname}" />
+							<h:outputText value="#{p.lastname} #{p.firstname}" />
 						</h:column>
 						<h:column>
-							<f:facet name="header">Activities</f:facet>
-							<h:outputText value="#{c.activities.size()}" />
+							<f:facet name="header">Activitées</f:facet>
+							<h:outputText value="#{p.cv.activities.size()}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">Action</f:facet>
