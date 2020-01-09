@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity()
@@ -21,7 +22,10 @@ public class CV implements Serializable {
     @GeneratedValue
     private Integer id;
     
-    @OneToMany(fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "cv")
+	private Person person;
+    
+    @OneToMany(mappedBy = "cv", fetch=FetchType.EAGER)
     List<Activity> activities = new ArrayList<Activity>();
 
     public Integer getId() {
@@ -32,10 +36,22 @@ public class CV implements Serializable {
         this.id = id;
     }
     
-    public List<Activity> getActivities() {
+    public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public List<Activity> getActivities() {
     	return activities;
     }
     
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+	
     public void addActivity(Activity activity) {
     	activities.add(activity);
     }

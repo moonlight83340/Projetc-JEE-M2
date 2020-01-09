@@ -1,11 +1,14 @@
 package myapp.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -13,95 +16,89 @@ import javax.validation.constraints.NotNull;
 @Table(name = "T_Activity")
 public class Activity implements Serializable {
     private static final long serialVersionUID = 1L;
-    
-    public Activity() {
-    	
-    }
-    
-    public Activity(Integer year, String nature, String title, String description, String webAdress) {
-		this.year = year;
-		this.nature = nature;
-		this.title = title;
-		this.description = description;
-		this.webAdress = webAdress;
-	}
-    
-    public Activity(Integer year, String nature, String title) {
-		this.year = year;
-		this.nature = nature;
-		this.title = title;
-	}
 
 	@Id()
     @GeneratedValue
     private Integer id;
-
-    @Column 
-    @NotNull
-    private Integer year;
-    
-    @Column
-    @NotNull
-    private String nature;
-   
+	
     @Column
     @NotNull
     private String title;
+
+	@NotNull
+	@Column()
+	private Date year;
     
-    @Column
-    private String description;
+	@Column()
+	@NotNull()
+	private ActivityType type;
+
+	@Column()
+	private String description;
     
     @Column 
-    private String webAdress;
-    
-    public Integer getId() {
-        return id;
-    }
+    private String webAddress;
+	
+	@ManyToOne()
+	@JoinColumn()
+	private CV cv;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getNature() {
-		return nature;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public String getDescription() {
-		return description;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Integer getYear() {
+	public Date getYear() {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public void setYear(Date year) {
 		this.year = year;
 	}
 
-	public void setNature(String nature) {
-		this.nature = nature;
+	public ActivityType getType() {
+		return type;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setType(ActivityType type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getWebAdress() {
-		return webAdress;
+	public String getWebAddress() {
+		return webAddress;
 	}
 
-	public void setWebAdress(String webAdress) {
-		this.webAdress = webAdress;
+	public void setWebAddress(String webAddress) {
+		this.webAddress = webAddress;
 	}
 
+	public CV getCv() {
+		return cv;
+	}
+
+	public void setCv(CV cv) {
+		this.cv = cv;
+	}
+	
 	@Override
     public boolean equals(Object obj) {
     	if(obj instanceof Activity)
