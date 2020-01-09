@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -43,6 +45,14 @@ public class Person implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private CV cv;
+	
+	@Column()
+	private String signUpToken;
+	
+	@ManyToOne()
+	@JoinColumn()
+	private Person invitedBy;
+
 
 	public Person() {
         super();
@@ -129,6 +139,22 @@ public class Person implements Serializable {
 		this.cv = cv;
 	}
 	
+	public String getSignUpToken() {
+		return signUpToken;
+	}
+
+	public void setSignUpToken(String signUpToken) {
+		this.signUpToken = signUpToken;
+	}
+
+	public Person getInvitedBy() {
+		return invitedBy;
+	}
+
+	public void setInvitedBy(Person invitedBy) {
+		this.invitedBy = invitedBy;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (! (obj instanceof Person) ) return false;

@@ -6,6 +6,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import myapp.model.Person;
 
@@ -37,10 +38,22 @@ public class PersonManager implements IFindLikeManager<Person>{
 	}
 	
 	public Person findByEmail(String email) {
-		return em.createQuery("Select p From Person p where p.email = '" + email + "'", Person.class)
-                .getSingleResult();
+		TypedQuery<Person> query = em.createQuery("Select p From Person p where p.email = '" + email + "'", Person.class);
+		if (query.getResultList().isEmpty())
+			return null;
+		else
+			return query.getSingleResult();
 	}
 
+	public Person getBySignUpToken(String signUpToken) {
+		TypedQuery<Person> query = em.createQuery("From Person where signUpToken = ?1", Person.class).setParameter(1,
+				signUpToken);
+		if (query.getResultList().isEmpty())
+			return null;
+		else
+			return query.getSingleResult();
+	}
+	
 	@Override
 	public Person save(Person t) {
         if (t.getId() == null) {

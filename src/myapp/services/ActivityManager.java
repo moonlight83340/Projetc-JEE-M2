@@ -40,16 +40,17 @@ public class ActivityManager implements IFindLikeManager<Activity> {
 	public Activity save(Activity t) {
         if (t.getId() == null) {
             em.persist(t);
-        } else {
-            t = em.merge(t);
         }
-        return t;
+        em.joinTransaction();
+        return t = em.merge(t);
 	}
 
 	@Override
 	public void delete(Activity t) {
-        t = em.merge(t);
-        em.remove(t);	
+		if (t != null) {
+	        t = em.merge(t);
+	        em.remove(t);	
+		}
 	}
 
 	@Override 
