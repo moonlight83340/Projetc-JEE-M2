@@ -24,7 +24,7 @@ public class AuthentificationController {
 	}
 
     public void logout() {
-    	am.logout();
+    	//am.logout();
     }
 	
 	public boolean isLogged() {
