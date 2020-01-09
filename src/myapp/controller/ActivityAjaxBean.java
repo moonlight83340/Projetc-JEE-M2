@@ -111,7 +111,9 @@ public class ActivityAjaxBean implements Serializable {
     	Date date = new Date();
     	date.setYear(yearValue.intValue());
         activity.setYear(date);
-        activity.setNature(natureText);
+        
+        //activity.setType(natureText);
+        
 		activity.setTitle(titleText);
 		activity.setDescription(descriptionText);
 		activity.setWebAddress(webAdressText);
@@ -120,8 +122,8 @@ public class ActivityAjaxBean implements Serializable {
     }
     
     public void setActivity(Activity activity) {
-        yearValue = activity.getYear();
-        natureText = activity.getNature();
+        yearValue = activity.getYear().getYear();
+        natureText = activity.getType().toString();
 		titleText = activity.getTitle();
 		descriptionText = activity.getDescription();
 		webAdressText = activity.getWebAddress();
