@@ -9,11 +9,11 @@
 	<ui:define name="content">
 		<f:view>
 
-			<h1>Liste des personnes :</h1>
+			<h1>Liste des CVs :</h1>
 
 			<h:form>
 
-				<h:panelGrid rendered="#{cv.wanteds.size() > 0}">
+				<h:panelGrid rendered="#{cv.wanteds.size() > 0}" style="width:100%;">
 					<h:dataTable value="#{cv.wanteds}" var="c"
 						styleClass="table table-hover" footerClass="danger"
 						rowClasses="success,warning">
