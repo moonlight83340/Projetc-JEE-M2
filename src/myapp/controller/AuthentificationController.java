@@ -24,5 +24,9 @@ public class AuthentificationController {
 	
 	public boolean isLogged() {
 		return am.isLogged();
-	}	
+	}
+	
+	public Person getConnectedPerson() {
+		return am.getAuthUser();
+	}
 }

@@ -17,7 +17,11 @@
 			<div class="jumbotron">
 				<h2>#{p.lastname} #{p.firstname}</h2>
 				<p>Email: #{p.email}</p>
-				<p><h:outputText rendered="#{p.website}">Site Web : <a href="#{p.website}">#{p.website}</a></h:outputText></p>
+				<p>
+					<h:outputText rendered="#{p.website}">Site Web : <a
+							href="#{p.website}">#{p.website}</a>
+					</h:outputText>
+				</p>
 				<p>Date de Naissance : #{p.birthDate}</p>
 				<h:form>
 					<p>
@@ -25,6 +29,16 @@
 							<span>Modifier</span>
 						</h:commandLink>
 					</p>
+					<h:outputText rendered="#{p.cv != null}">
+						<h:commandLink action="#{cv.show(p.cv.id)}" styleClass="btn btn-warning">
+							Afficher le CV
+						</h:commandLink>
+					</h:outputText>
+					<h:outputText rendered="#{p.cv == null}">
+						<h:commandLink action="#{cv.show(p.cv.id)}" styleClass="btn btn-primary">
+							Ajouter un cv
+						</h:commandLink>
+					</h:outputText>
 				</h:form>
 			</div>
 		</f:view>
