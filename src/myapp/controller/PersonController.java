@@ -39,10 +39,6 @@ public class PersonController implements Controller<Person>{
 			p1.setBirthDate(new Date());
 			p1.setPassword("password");
 			
-			CV cv = new CV();
-			cv.addActivity(new Activity(1990, "nature", "title"));
-			p1.setCv(cv);
-			
 			manager.save(p1);
 		}
 		

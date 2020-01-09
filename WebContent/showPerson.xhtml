@@ -17,7 +17,7 @@
 			<div class="jumbotron">
 				<h2>#{p.lastname} #{p.firstname}</h2>
 				<p>Email: #{p.email}</p>
-				<h:outputText rendered="#{p.website}">Site Web : <a href="#{p.website}">#{p.website}</a></h:outputText>
+				<p><h:outputText rendered="#{p.website}">Site Web : <a href="#{p.website}">#{p.website}</a></h:outputText></p>
 				<p>Date de Naissance : #{p.birthDate}</p>
 				<h:form>
 					<p>

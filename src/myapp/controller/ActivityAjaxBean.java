@@ -2,6 +2,7 @@ package myapp.controller;
 
 import java.io.Serializable;
 import java.time.Year;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -107,11 +108,13 @@ public class ActivityAjaxBean implements Serializable {
     public Activity createActivity() {
     	Activity activity = new Activity();
     	
-        activity.setYear(yearValue);
+    	Date date = new Date();
+    	date.setYear(yearValue.intValue());
+        activity.setYear(date);
         activity.setNature(natureText);
 		activity.setTitle(titleText);
 		activity.setDescription(descriptionText);
-		activity.setWebAdress(webAdressText);
+		activity.setWebAddress(webAdressText);
 		
     	return activity;
     }
@@ -121,7 +124,7 @@ public class ActivityAjaxBean implements Serializable {
         natureText = activity.getNature();
 		titleText = activity.getTitle();
 		descriptionText = activity.getDescription();
-		webAdressText = activity.getWebAdress();
+		webAdressText = activity.getWebAddress();
     }
     
     public void resetActivity() {

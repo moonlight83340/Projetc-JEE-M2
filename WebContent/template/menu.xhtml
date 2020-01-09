@@ -15,7 +15,7 @@
        		<a href="cvs.xhtml">CVs</a>
 		</li>
 		<c:choose>
-			<c:when test="#{!userAuth.isLogged()}">
+			<c:when test="#{userAuth.isLogged() == false}">
 				<li>
 					<a href="signin.xhtml">Connexion</a>
 				</li>					
