@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <ui:composition template="/template/mylayout.xhtml">
-        <ui:define name="content">
-            <h1>
-                <h:outputText value="#{messages.helloWorld}" />
-            </h1>
-        </ui:define>
-        <ui:define name="title">Home</ui:define>
-    </ui:composition>
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="content">
+		<f:view>
+
+			<h2>Liste des personnes les plus recherchés :</h2>
+			<h:form>
+				<h:panelGrid rendered="#{person.getSomePersons().size() > 0}"
+					style="width:100%;">
+					<h:dataTable value="#{person.wanteds}" var="o"
+						styleClass="table table-hover" footerClass="danger">
+
+						<h:column>
+							<f:facet name="header">Prénom</f:facet>
+							<h:outputText value="#{o.firstname}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nom de famille</f:facet>
+							<h:outputText value="#{o.lastname}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							<h:outputText value="#{o.email}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Action</f:facet>
+
+							<h:commandLink value="Afficher"
+								styleClass="btn btn-primary btn-xs"
+								action="#{person.show(o.id)}" />
+						</h:column>
+					</h:dataTable>
+				</h:panelGrid>
+
+				<h:panelGrid rendered="#{person.getSomePersons().size() == 0}">
+					<h:outputText style="text-align:center;"
+						value="Aucune personne n'a été trouvée !">
+					</h:outputText>
+				</h:panelGrid>
+
+			</h:form>
+
+		</f:view>
+	</ui:define>
+	<ui:define name="title">Home</ui:define>
+</ui:composition>
 
 </html>

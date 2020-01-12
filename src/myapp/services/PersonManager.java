@@ -37,6 +37,16 @@ public class PersonManager implements IFindLikeManager<Person>{
 		return em.find(Person.class, id);
 	}
 	
+	public List<Person> findSome(int some) {
+		TypedQuery<Person> query = em.createQuery("Select p From Person p", Person.class);
+		query.setMaxResults(some);
+		if (query.getResultList().isEmpty())
+			return null;
+		else
+			return query.getResultList();
+	}
+
+	
 	public Person findByEmail(String email) {
 		TypedQuery<Person> query = em.createQuery("Select p From Person p where p.email = '" + email + "'", Person.class);
 		if (query.getResultList().isEmpty())

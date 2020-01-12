@@ -76,6 +76,10 @@ public class PersonController implements Controller<Person>{
 	public List<Person> getAll() {
 		return manager.findAll();
 	}
+	
+	public List<Person> getSomePersons(){
+		return manager.findSome(5);
+	}
 
 	@Override
 	public String updateWithFilter() {
