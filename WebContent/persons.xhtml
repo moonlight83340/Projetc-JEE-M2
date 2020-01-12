@@ -15,7 +15,7 @@
 				<h:panelGrid columns="3" style="width:100%;">
 
 					<h:panelGrid columns="1" style="width:50%;">
-						<c:if test="#{true}">
+						<c:if test="#{userAuth.isLogged()}">
 							<h:commandLink styleClass="btn btn-success"
 								action="#{person.newInstance()}" value="+" />
 						</c:if>
