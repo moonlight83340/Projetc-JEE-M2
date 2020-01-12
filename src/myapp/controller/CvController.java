@@ -31,9 +31,6 @@ public class CvController implements Controller<CV>{
 		System.out.println("Create " + this);
 		if (manager.findAll().size() == 0) {
 			CV c1 = new CV();
-			
-			
-			
 			manager.save(c1);
 		}
 		

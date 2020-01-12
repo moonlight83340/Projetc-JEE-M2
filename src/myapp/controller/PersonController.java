@@ -9,16 +9,12 @@ import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import myapp.model.Activity;
-import myapp.model.CV;
 import myapp.model.Person;
 import myapp.services.PersonManager;
 
 @ManagedBean(name = "person")
 @SessionScoped
 public class PersonController implements Controller<Person>{
-
 	@EJB
 	private PersonManager manager;
 
