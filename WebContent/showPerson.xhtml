@@ -15,32 +15,65 @@
 		<f:view>
 			<c:set var="p" value="#{person.theInstance}" />
 			<div class="jumbotron">
-				<h2>#{p.lastname} #{p.firstname}</h2>
-				<p>Email: #{p.email}</p>
-				<p>
-					<h:outputText rendered="#{p.website}">Site Web : <a
-							href="#{p.website}">#{p.website}</a>
-					</h:outputText>
-				</p>
-				<p>Date de Naissance : #{p.birthDate}</p>
 				<h:form>
-					<p>
-						<h:commandLink action="editPerson" styleClass="btn btn-danger">
-							<span>Modifier</span>
-						</h:commandLink>
-					</p>
-					<h:outputText rendered="#{p.cv != null}">
-						<h:commandLink action="#{cv.show(p.cv.id)}" styleClass="btn btn-warning">
-							Afficher le CV
-						</h:commandLink>
-					</h:outputText>
-					<h:outputText rendered="#{p.cv == null}">
-						<h:commandLink action="#{cv.show(p.cv.id)}" styleClass="btn btn-primary">
-							Ajouter un cv
-						</h:commandLink>
-					</h:outputText>
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+							<h:graphicImage value="/resources/images/profile.jpg" alt="image de profile" style="width: 150px; height: 150px; border-radius: 100%;"/>
+							
+						</div>
+						<div class="col-md-3">
+							<h:commandLink
+								rendered="#{userAuth.getConnectedPerson().id == p.id}"
+								action="editPerson" styleClass="btn btn-danger">
+								<span>Modifier</span>
+							</h:commandLink>
+							<h:outputText rendered="#{p.cv != null} #{userAuth.isLogged()}">
+								<h:commandLink action="#{cv.show(p.cv.id)}"
+									styleClass="btn btn-warning">
+									Afficher le CV
+								</h:commandLink>
+							</h:outputText>
+							<h:outputText rendered="#{p.cv == null} #{userAuth.isLogged()}">
+								<h:commandLink action="#{cv.show(p.cv.id)}"
+									styleClass="btn btn-primary">
+									Ajouter un cv
+								</h:commandLink>
+							</h:outputText>
+						</div>
+					</div>
 				</h:form>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-6">
+						<h2>#{p.lastname} #{p.firstname}</h2>
+
+						<table class="table table-hover" style="border-raduis: 20px;">
+							<tbody>
+								<tr>
+									<td>Email</td>
+									<td>#{p.email}</td>
+								</tr>
+								<h:outputText rendered="#{p.website}">
+									<tr>
+										<td>Site Web</td>
+										<td><a href="#{p.website}">#{p.website}</a></td>
+									</tr>
+								</h:outputText>
+								<tr>
+									<td>Date de Naissance</td>
+									<td>
+										<h:outputText value="#{p.birthDate}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
+
 		</f:view>
 	</ui:define>
 </ui:composition>

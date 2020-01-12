@@ -39,8 +39,7 @@
 
 				<h:panelGrid rendered="#{person.wanteds.size() > 0}" style="width:100%;">
 					<h:dataTable value="#{person.wanteds}" var="o"
-						styleClass="table table-hover" footerClass="danger"
-						rowClasses="success,warning">
+						styleClass="table table-hover" footerClass="danger">
 
 						<h:column>
 							<f:facet name="header">Prénom</f:facet>
@@ -56,7 +55,7 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">Action</f:facet>
-							<h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
+							<h:commandLink value="Afficher" styleClass="btn btn-primary btn-xs"
 								action="#{person.show(o.id)}" />
 						</h:column>
 					</h:dataTable>
