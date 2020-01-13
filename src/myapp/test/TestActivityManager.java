@@ -47,7 +47,7 @@ class TestActivityManager {
 	    }
 	    
 		public Activity createNewDefaultActivityInit() {
-			Activity activity = new Activity(2019,"TestNature", "TestTitle");
+			Activity activity = null;//new Activity(2019,"TestNature", "TestTitle");
 			return activity;
 		}
 
@@ -98,7 +98,7 @@ class TestActivityManager {
 		public void testSaveActivityMerge() {
 	    	Activity activity = createNewDefaultActivityInit();
 	    	activity = pm.save(activity);	
-	    	activity.setNature("defaultNat");
+	    	//activity.setNature("defaultNat");
 	    	activity = pm.save(activity);	
 			Activity same = pm.find(activity.getId());
 			assertNotNull(same);

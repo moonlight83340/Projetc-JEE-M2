@@ -9,16 +9,14 @@
 	<li><a href="persons.xhtml">Personnes</a></li>
 	<li><a href="cvs.xhtml">CVs</a></li>
 	<c:choose>
-		<c:when test="#{!userAuth.isLogged()}">
-			<li><a href="signin.xhtml">Connexion</a></li>
-		</c:when>
-		<c:otherwise>
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false"> <h:outputText
-						value="#{userAuth.connectedPerson.firstname} #{userAuth.connectedPerson.lastname}"></h:outputText>
-					<span class="caret"></span>
-			</a>
+		<c:when test="#{userAuth.isLogged()}">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> <h:outputText
+							value="#{userAuth.connectedPerson.firstname} #{userAuth.connectedPerson.lastname}"></h:outputText>
+						<span class="caret"></span>
+				</a>
 				<form>
 					<ul class="dropdown-menu">
 						<li><h:link action="#{person.show(o.id)}">Mon profil</h:link>
@@ -28,7 +26,11 @@
 							Déconnexion
 						</h:commandLink></li>
 					</ul>
-				</form></li>
+				</form>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li><a href="signin.xhtml">Connexion</a></li>	
 		</c:otherwise>
 	</c:choose>
 </ui:composition>

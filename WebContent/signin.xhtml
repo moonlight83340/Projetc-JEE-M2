@@ -13,19 +13,19 @@
 			<h:form>
 				<div class="form-group">
 					<label>Email address</label>
-					<h:inputText id="email" value="" class="form-control">
+					<h:inputText id="email" value="#{userAuth.email}" class="form-control">
 						<f:validateRequired />
 
 					</h:inputText>
 				</div>
 				<div class="form-group">
 					<label>Password</label>
-					<h:inputSecret id="password" value="" class="form-control">
+					<h:inputSecret id="password" value="#{userAuth.password}" class="form-control">
 						<f:validateRequired />
 					</h:inputSecret>
 				</div>
 				<h:commandButton value="Connexion" styleClass="btn btn-success"
-					action="signin.xhtml" />
+					action="#{userAuth.login()}" />
 			</h:form>
 		</div>
 	</ui:define>

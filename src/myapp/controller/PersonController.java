@@ -9,6 +9,9 @@ import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import myapp.model.Person;
 import myapp.services.PersonManager;
 
@@ -33,7 +36,7 @@ public class PersonController implements Controller<Person>{
 			p1.setFirstname("firstname");
 			p1.setEmail("lastname.firstname@a.fr");
 			p1.setBirthDate(new Date());
-			p1.setPassword("password");
+			p1.setPassword(BCrypt.hashpw("password", BCrypt.gensalt()));
 			
 			manager.save(p1);
 		}
