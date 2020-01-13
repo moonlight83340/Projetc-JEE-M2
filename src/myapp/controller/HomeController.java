@@ -50,11 +50,7 @@ public class HomeController {
 		Activity activity;
 		long time;
 		if (pm.findAll().size() < 100) {
-<<<<<<< HEAD
 			for (int i = 0; i < 100; i++) {
-=======
-			for (int i = 0; i < 2; i++) {
->>>>>>> 79cf894a0dda9f2178726dd47074c6afbaf9e4d2
 
 				person = new Person();
 				time = System.currentTimeMillis();
