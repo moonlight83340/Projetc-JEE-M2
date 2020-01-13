@@ -114,6 +114,9 @@ public class PersonController implements Controller<Person>{
 	 */
 	@Override
 	public String save() {
+		//if the mdp is empty we create a new one "password" and hash it
+		if(theInstance.getPassword().isBlank())
+			theInstance.setPassword(BCrypt.hashpw("password", BCrypt.gensalt()));
 		manager.save(theInstance);
 		wanteds = getAll();
 		return "showPerson";
