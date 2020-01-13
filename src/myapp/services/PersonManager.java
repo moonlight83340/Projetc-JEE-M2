@@ -110,14 +110,13 @@ public class PersonManager implements IFindLikeManager<Person>{
 	 * @return the person
 	 */
 	@Override
-	public Person save(Person t) {
-        if (t.getId() == null) {
+    public Person save(Person t) {
+        if (find(t.getId()) == null) {
             em.persist(t);
-        } else {
-            t = em.merge(t);
-        }
-        return t;
-	}
+        }        
+        em.joinTransaction();
+        return t = em.merge(t);
+    }
 
 	/**
 	 * Delete a Person.

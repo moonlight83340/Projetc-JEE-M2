@@ -64,13 +64,13 @@ public class ActivityManager implements IFindLikeManager<Activity> {
 	 * @return the activity
 	 */
 	@Override
-	public Activity save(Activity t) {
-        if (t.getId() == null) {
+    public Activity save(Activity t) {
+        if (find(t.getId()) == null) {
             em.persist(t);
         }
         em.joinTransaction();
         return t = em.merge(t);
-	}
+    }
 
 	/**
 	 * Delete an Acitivity.

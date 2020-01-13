@@ -52,14 +52,13 @@ public class CVManager implements IManager<CV>{
 	 * @return the cv
 	 */
 	@Override
-	public CV save(CV t) {
-        if (t.getId() == null) {
+   public CV save(CV t) {
+        if (find(t.getId()) == null) {
             em.persist(t);
-        } else {
-            t = em.merge(t);
-        }
-        return t;
-	}
+        } 
+        em.joinTransaction();
+        return t = em.merge(t);
+    }
 
 	/**
 	 * Delete a CV.
