@@ -3,13 +3,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
 
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 		<f:view>
-
+			
+			<h:outputText rendered="#{userAuth.getConnectedPerson().id == person.theInstance.id}">
+			
 			<h1>Modifier une personne :</h1>
 			<h:form id="test">
 				<c:set var="p" value="#{person.theInstance}" />
@@ -41,6 +43,7 @@
 						validatorMessage="Le format ne correspond pas à une date">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
 					</h:inputText>
+					<p style="color:grey; font-size: 10px;">*Le format doit etre JJ-MM-AAAA*</p>
 					<h:message styleClass="label label-danger" for="birthdate" />
 				</div>
 
@@ -76,7 +79,17 @@
 				</div>
 			</h:form>
 			<h:outputText style="color:red;" value="Les champs suivi d'un * sont obligatoires !"> </h:outputText>
-
+			</h:outputText>
+			
+			<h:outputText rendered="#{userAuth.getConnectedPerson().id != person.theInstance.id}">
+			
+				<h2 style="color:red; text-align:center;"> Une erreur est survenu !</h2>	
+				<p style="text-align:center;">
+					Merci de retourner à l'accueil, si l'erreur persiste merci de nous contacter !
+				</p>
+			
+			</h:outputText>
+			
 		</f:view>
 	</ui:define>
 </ui:composition>
