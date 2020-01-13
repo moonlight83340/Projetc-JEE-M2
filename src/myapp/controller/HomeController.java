@@ -75,4 +75,13 @@ public class HomeController {
 			}
 		}
 	}
+	
+	/**
+	 * Gets some persons.
+	 *
+	 * @return the some persons
+	 */
+	public List<Person> getSomePersons(){
+		return pm.findSome(5);
+	}
 }
