@@ -56,7 +56,7 @@ public class Person implements Serializable {
     private String password;
 
 	/** The cv. */
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private CV cv;
 	
 	/** The sign up token. */
