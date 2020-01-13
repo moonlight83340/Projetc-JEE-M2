@@ -12,7 +12,7 @@
 			<h:form>
 				<h:panelGrid rendered="#{home.getSomePersons().size() > 0}"
 					style="width:100%;">
-					<h:dataTable value="#{person.wanteds}" var="o"
+					<h:dataTable value="#{home.getSomePersons()}" var="o"
 						styleClass="table table-hover" footerClass="danger">
 
 						<h:column>

@@ -123,6 +123,17 @@ public class PersonController implements Controller<Person>{
 	}
 
 	/**
+	 * Exit the edit of a Person.
+	 *
+	 * @return the string
+	 */
+	public String exit() {
+		theInstance = null;
+		wanteds = getAll();
+		return "index";
+	}
+	
+	/**
 	 * Gets all Persons.
 	 *
 	 * @return the all

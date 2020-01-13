@@ -31,7 +31,7 @@ public class AuthentificationController {
 	 * @return the string
 	 */
 	public String login() {
-		Person user = am.login(email,password);;
+		Person user = am.login(email,password);
 		if (user != null) {
 			setPassword("");
 			return "index.xhmtl?faces-redirect=true";			
@@ -39,8 +39,8 @@ public class AuthentificationController {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect email or password",
-							"Please enter correct username and Password"));
+							"Email ou mot de passe incorrect",
+							"Merci d'entrer un email et un mot de passe valide !"));
 			return null;
 		}
 	}
