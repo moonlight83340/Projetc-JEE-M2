@@ -18,12 +18,20 @@
 						<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><h:link action="#{person.show(userAuth.getConnectedPerson().id)}">Mon profil</h:link>
+				<h:form>
+					<li>
+						
+							<h:commandLink action="#{person.show(userAuth.getConnectedPerson().id)}">Mon profil</h:commandLink>
+						
 					</li>
 					<li role="separator" class="divider"></li>
-					<li><h:commandLink action="#{userAuth.logout()}">
-						Déconnexion
-					</h:commandLink></li>
+					
+					<li>
+
+						<h:commandLink action="#{userAuth.logout()}">Déconnexion</h:commandLink>
+
+					</li>
+				</h:form>
 				</ul>
 			</li>
 		</c:when>
