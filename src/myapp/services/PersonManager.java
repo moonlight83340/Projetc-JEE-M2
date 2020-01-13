@@ -125,8 +125,10 @@ public class PersonManager implements IFindLikeManager<Person>{
 	 */
 	@Override
 	public void delete(Person t) {
-        t = em.merge(t);
-        em.remove(t);	
+		Person pers = find(t.getId());
+		if (pers != null) {
+			em.remove(t);	
+		}
 	}
 
 	/**

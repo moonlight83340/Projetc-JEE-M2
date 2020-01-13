@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import myapp.model.Activity;
+import myapp.model.Person;
 
 /**
  * The Class ActivityManager.
@@ -79,9 +80,9 @@ public class ActivityManager implements IFindLikeManager<Activity> {
 	 */
 	@Override
 	public void delete(Activity t) {
-		if (t != null) {
-	        t = em.merge(t);
-	        em.remove(t);	
+		Activity act = find(t.getId());
+		if (act != null) {
+			em.remove(t);	
 		}
 	}
 

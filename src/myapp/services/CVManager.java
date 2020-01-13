@@ -9,6 +9,7 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import myapp.model.Activity;
 import myapp.model.CV;
 
 /**
@@ -67,8 +68,10 @@ public class CVManager implements IManager<CV>{
 	 */
 	@Override
 	public void delete(CV t) {
-        t = em.merge(t);
-        em.remove(t);	
+		CV cv = find(t.getId());
+		if (cv != null) {
+			em.remove(t);	
+		}
 	}
 
 	/**
