@@ -111,7 +111,7 @@ public class PersonManager implements IFindLikeManager<Person>{
 	 */
 	@Override
     public Person save(Person t) {
-        if (find(t.getId()) == null) {
+        if (t.getId() == null ||find(t.getId()) == null) {
             em.persist(t);
         }        
         em.joinTransaction();

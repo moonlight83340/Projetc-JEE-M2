@@ -53,7 +53,7 @@ public class CVManager implements IManager<CV>{
 	 */
 	@Override
    public CV save(CV t) {
-        if (find(t.getId()) == null) {
+        if (t.getId() == null ||find(t.getId()) == null) {
             em.persist(t);
         } 
         em.joinTransaction();

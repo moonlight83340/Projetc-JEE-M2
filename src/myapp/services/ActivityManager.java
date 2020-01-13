@@ -65,7 +65,7 @@ public class ActivityManager implements IFindLikeManager<Activity> {
 	 */
 	@Override
     public Activity save(Activity t) {
-        if (find(t.getId()) == null) {
+        if (t.getId() == null || find(t.getId()) == null) {
             em.persist(t);
         }
         em.joinTransaction();

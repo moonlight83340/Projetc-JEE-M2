@@ -63,13 +63,13 @@ public class HomeController {
 					person.setInvitedBy(lastPerson);
 
 				cv = new CV();
-
+				cv = cvm.save(cv);
 				activity = new Activity();
 				activity.setTitle("activity 1");
 				activity.setYear(new Date(time));
 				activity.setType(ActivityType.Formation);
 				activity.setCv(cv);
-
+				activity = am.save(activity);
 				cv.addActivity(activity);
 
 				activity = new Activity();
@@ -77,7 +77,7 @@ public class HomeController {
 				activity.setYear(new Date(time));
 				activity.setType(ActivityType.Profesionnal);
 				activity.setCv(cv);
-
+				activity = am.save(activity);
 				cv.addActivity(activity);
 
 				person.setCv(cv);
