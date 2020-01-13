@@ -33,6 +33,7 @@ public class AuthentificationController {
 	public String login() {
 		Person user = am.login(email,password);;
 		if (user != null) {
+			setPassword("");
 			return "index.xhmtl?faces-redirect=true";			
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
@@ -48,6 +49,7 @@ public class AuthentificationController {
      * Logout the user.
      */
     public void logout() {
+    	setEmail("");
     	am.logout();
     }
 	
