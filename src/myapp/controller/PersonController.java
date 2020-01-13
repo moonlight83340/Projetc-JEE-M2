@@ -15,16 +15,29 @@ import org.mindrot.jbcrypt.BCrypt;
 import myapp.model.Person;
 import myapp.services.PersonManager;
 
+/**
+ * The Class PersonController.
+ */
 @ManagedBean(name = "person")
 @SessionScoped
 public class PersonController implements Controller<Person>{
+	
+	/** The Person manager. */
 	@EJB
 	private PersonManager manager;
 
+	/** The instance of the current Person. */
 	private Person theInstance = new Person();
+	
+	/** The wanteds Persons. */
 	private List<Person> wanteds = new ArrayList<Person>();
+	
+	/** The filter text. */
 	private String filterText = "";
 
+	/**
+	 * Inits the Controller.
+	 */
 	@PostConstruct
 	public void init() {
 		System.out.println("Create " + this);
@@ -44,23 +57,49 @@ public class PersonController implements Controller<Person>{
 		wanteds = getAll();
 	}
 
+	/**
+	 * Gets the wanteds Persons.
+	 *
+	 * @return the wanteds
+	 */
 	@PermitAll
 	public List<Person> getWanteds() {
 		return wanteds;
 	}
 	
+	/**
+	 * Gets the instance of the current Person.
+	 *
+	 * @return the current Person
+	 */
 	public Person getTheInstance() {
 		return theInstance;
 	}
 	
+	/**
+	 * Gets the filter text.
+	 *
+	 * @return the filter text
+	 */
 	public String getFilterText() {
 		return filterText;
 	}
 	
+	/**
+	 * Sets the filter text.
+	 *
+	 * @param filter the new filter text
+	 */
 	public void setFilterText(String filter) {
 		this.filterText = filter;
 	}
 
+	/**
+	 * Show a Person by it's ID.
+	 *
+	 * @param n the n
+	 * @return the string
+	 */
 	@Override
 	@PermitAll
 	public String show(Integer n) {
@@ -68,6 +107,11 @@ public class PersonController implements Controller<Person>{
 		return "showPerson";
 	}
 
+	/**
+	 * Save a Person.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String save() {
 		manager.save(theInstance);
@@ -75,15 +119,30 @@ public class PersonController implements Controller<Person>{
 		return "showPerson";
 	}
 
+	/**
+	 * Gets all Persons.
+	 *
+	 * @return the all
+	 */
 	@Override
 	public List<Person> getAll() {
 		return manager.findAll();
 	}
 	
+	/**
+	 * Gets some persons.
+	 *
+	 * @return the some persons
+	 */
 	public List<Person> getSomePersons(){
 		return manager.findSome(5);
 	}
 
+	/**
+	 * Update with filter.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String updateWithFilter() {
 		if(filterText == "") {
@@ -94,11 +153,21 @@ public class PersonController implements Controller<Person>{
 		return filterText;
 	}
 
+	/**
+	 * Edits a Person.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String edit() {
 		return "editPerson?faces-redirect=true";
 	}
 
+	/**
+	 * Create a new Person
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String newInstance() {
 		theInstance = new Person();
