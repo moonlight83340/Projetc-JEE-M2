@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import myapp.model.CV;
+import myapp.model.Person;
 import myapp.services.CVManager;
 
 /**
@@ -22,6 +23,9 @@ public class CvController implements Controller<CV>{
 
 	/** The instance of the current CV. */
 	CV theInstance = new CV();
+	
+	/** The owner of the current CV. */
+	Person owner = new Person();
 	
 	/** The wanteds CVs. */
 	List<CV> wanteds = new ArrayList<CV>();
@@ -92,11 +96,22 @@ public class CvController implements Controller<CV>{
 	/**
 	 * Show a CV by it's ID.
 	 *
-	 * @param n the n
+	 * @param n the id
 	 * @return the string
 	 */
 	@Override
 	public String show(Integer n) {
+		theInstance = manager.find(n);
+		return "showCV";
+	}
+	
+	/**
+	 * Show a CV by it's ID and set the owner.
+	 *
+	 * @param n the id
+	 * @return the string
+	 */
+	public String show(Integer n, Person p) {
 		theInstance = manager.find(n);
 		return "showCV";
 	}

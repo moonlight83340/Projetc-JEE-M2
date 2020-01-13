@@ -10,7 +10,7 @@
 
 			<h2>Liste des personnes les plus recherchés :</h2>
 			<h:form>
-				<h:panelGrid rendered="#{person.getSomePersons().size() > 0}"
+				<h:panelGrid rendered="#{home.getSomePersons().size() > 0}"
 					style="width:100%;">
 					<h:dataTable value="#{person.wanteds}" var="o"
 						styleClass="table table-hover" footerClass="danger">
@@ -37,7 +37,7 @@
 					</h:dataTable>
 				</h:panelGrid>
 
-				<h:panelGrid rendered="#{person.getSomePersons().size() == 0}">
+				<h:panelGrid rendered="#{home.getSomePersons().size() == 0}">
 					<h:outputText style="text-align:center;"
 						value="Aucune personne n'a été trouvée !">
 					</h:outputText>
