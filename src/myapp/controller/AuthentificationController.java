@@ -48,9 +48,10 @@ public class AuthentificationController {
     /**
      * Logout the user.
      */
-    public void logout() {
+    public String logout() {
     	setEmail("");
     	am.logout();
+    	return "index.xhmtl?faces-redirect=true";	
     }
 	
 	/**

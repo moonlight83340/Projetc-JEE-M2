@@ -49,8 +49,8 @@ public class HomeController {
 		CV cv;
 		Activity activity;
 		long time;
-		if (pm.findAll().size() < 100000) {
-			for (int i = 0; i < 100000; i++) {
+		if (pm.findAll().size() < 100) {
+			for (int i = 0; i < 2; i++) {
 
 				person = new Person();
 				time = System.currentTimeMillis();
