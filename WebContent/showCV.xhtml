@@ -12,6 +12,9 @@
 			<h1>Liste des Activitées :</h1>
 
 			<h:form>
+			
+				<h:commandLink rendered="#{cv.ownerId} > 0" value="Afficher" styleClass="btn btn-primary"
+								action="#{person.show(cv.ownerId)}" />
 
 				<!-- afficher les villes si elles existent -->
 

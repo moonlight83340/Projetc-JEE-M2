@@ -17,10 +17,10 @@ import javax.persistence.UniqueConstraint;
 
 /**
  * The Class Person.
- * @author Gaëtan
+ * @author Gaï¿½tan
  */
 @Entity()
-@Table(name = "T_Person",uniqueConstraints={@UniqueConstraint(columnNames = "email")})
+@Table(name = "T_Person", uniqueConstraints={@UniqueConstraint(columnNames = "email")})
 public class Person implements Serializable {
 
     /** The Constant serialVersionUID. */

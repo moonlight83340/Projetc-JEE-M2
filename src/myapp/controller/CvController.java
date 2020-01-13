@@ -25,7 +25,7 @@ public class CvController implements Controller<CV>{
 	CV theInstance = new CV();
 	
 	/** The owner of the current CV. */
-	Person owner = new Person();
+	Integer ownerId;
 	
 	/** The wanteds CVs. */
 	List<CV> wanteds = new ArrayList<CV>();
@@ -111,8 +111,8 @@ public class CvController implements Controller<CV>{
 	 * @param n the id
 	 * @return the string
 	 */
-	public String show(Integer n, Person p) {
-		owner = p;
+	public String show(Integer n, Integer p) {
+		ownerId = p;
 		theInstance = manager.find(n);
 		return "showCV";
 	}

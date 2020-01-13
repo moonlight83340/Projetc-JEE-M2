@@ -29,7 +29,7 @@
 								<span>Modifier</span>
 							</h:commandLink>
 							<h:outputText rendered="#{p.cv != null} #{userAuth.isLogged()}">
-								<h:commandLink action="#{cv.show(p.cv.id)}"
+								<h:commandLink action="#{cv.show(p.cv.id, p.id)}"
 									styleClass="btn btn-warning">
 									Afficher le CV
 								</h:commandLink>
