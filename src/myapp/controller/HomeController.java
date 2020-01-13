@@ -1,6 +1,8 @@
 package myapp.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -34,6 +36,8 @@ public class HomeController {
 	@EJB
 	ActivityManager am;
 
+	/** List of Person */
+	public List<Person> persons = new ArrayList<>();
 
 	/**
 	 * Init the Database.
@@ -71,5 +75,4 @@ public class HomeController {
 			}
 		}
 	}
-
 }
