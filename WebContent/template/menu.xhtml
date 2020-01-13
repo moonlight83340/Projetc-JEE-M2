@@ -17,16 +17,14 @@
 							value="#{userAuth.connectedPerson.firstname} #{userAuth.connectedPerson.lastname}"></h:outputText>
 						<span class="caret"></span>
 				</a>
-				<form>
-					<ul class="dropdown-menu">
-						<li><h:link action="#{person.show(o.id)}">Mon profil</h:link>
-						</li>
-						<li role="separator" class="divider"></li>
-						<li><h:commandLink action="#{userAuth.logout()}">
-							Déconnexion
-						</h:commandLink></li>
-					</ul>
-				</form>
+				<ul class="dropdown-menu">
+					<li><h:link action="#{person.show(userAuth.getConnectedPerson().id)}">Mon profil</h:link>
+					</li>
+					<li role="separator" class="divider"></li>
+					<li><h:commandLink action="#{userAuth.logout()}">
+						Déconnexion
+					</h:commandLink></li>
+				</ul>
 			</li>
 		</c:when>
 		<c:otherwise>
