@@ -112,6 +112,7 @@ public class CvController implements Controller<CV>{
 	 * @return the string
 	 */
 	public String show(Integer n, Person p) {
+		owner = p;
 		theInstance = manager.find(n);
 		return "showCV";
 	}
