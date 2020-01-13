@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import myapp.model.Activity;
 import myapp.model.CV;
 import myapp.services.CVManager;
 

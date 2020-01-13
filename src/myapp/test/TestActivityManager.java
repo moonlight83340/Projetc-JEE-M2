@@ -1,24 +1,17 @@
 package myapp.test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Date;
 import java.util.List;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import myapp.model.Activity;
+import myapp.model.ActivityType;
 import myapp.services.ActivityManager;
-
 import static org.junit.Assert.assertNotNull;
-
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
 
 class TestActivityManager {
 	    @EJB
@@ -47,7 +40,10 @@ class TestActivityManager {
 	    }
 	    
 		public Activity createNewDefaultActivityInit() {
-			Activity activity = null;//new Activity(2019,"TestNature", "TestTitle");
+			Activity activity = new Activity();
+			activity.setTitle("title");
+			activity.setDescription("description");
+			activity.setType(ActivityType.Other);
 			return activity;
 		}
 
@@ -98,7 +94,7 @@ class TestActivityManager {
 		public void testSaveActivityMerge() {
 	    	Activity activity = createNewDefaultActivityInit();
 	    	activity = pm.save(activity);	
-	    	//activity.setNature("defaultNat");
+	    	activity.setType(ActivityType.Profesionnal);
 	    	activity = pm.save(activity);	
 			Activity same = pm.find(activity.getId());
 			assertNotNull(same);
